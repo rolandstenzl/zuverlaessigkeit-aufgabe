@@ -1,4 +1,4 @@
-from components import ReliabilityDataset
+from src.components import ReliabilityDataset
 
 # =========================
 # Datensatz 1 (Basis)
