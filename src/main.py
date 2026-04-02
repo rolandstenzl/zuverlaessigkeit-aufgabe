@@ -1,6 +1,6 @@
 from pprint import pprint
 
-from src.datasets import dataset_1
+from src.dataset import dataset_1
 from src.components import (
     create_freileitung,
     create_kabel,
