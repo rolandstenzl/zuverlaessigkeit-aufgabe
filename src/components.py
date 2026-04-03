@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+
 @dataclass
 class ReliabilityDataset:
     name: str
@@ -95,7 +96,9 @@ class Component:
         }
 
 
-def create_freileitung(name: str, dataset: ReliabilityDataset, length_km: float) -> Component:
+def create_freileitung(
+    name: str, dataset: ReliabilityDataset, length_km: float
+) -> Component:
     return Component(
         name=name,
         component_type="Freileitung",
@@ -141,4 +144,32 @@ def create_sammelschiene(name: str, dataset: ReliabilityDataset) -> Component:
         component_type="Sammelschiene",
         failure_rate_per_year=dataset.H_sammelschiene,
         repair_time_hours=dataset.T_sammelschiene_h,
+    )
+
+
+def create_schaltfeld(name: str, dataset: ReliabilityDataset) -> Component:
+    """
+    Schaltfeld = Trenner + Leistungsschalter + Trenner (Serie)
+    """
+
+    # Ausfall-NV summieren (Serienannahme)
+    nv_failure = (
+        (dataset.H_trenner * dataset.T_trenner_h)
+        + (dataset.H_leistungsschalter * dataset.T_leistungsschalter_h)
+        + (dataset.H_trenner * dataset.T_trenner_h)
+    ) / 8760.0
+
+    # daraus wieder äquivalente Ausfallrate ableiten
+    # (wir setzen T = gewichteter Mittelwert, einfache Näherung)
+    failure_rate = dataset.H_trenner + dataset.H_leistungsschalter + dataset.H_trenner
+
+    repair_time = (
+        dataset.T_trenner_h + dataset.T_leistungsschalter_h + dataset.T_trenner_h
+    ) / 3.0
+
+    return Component(
+        name=name,
+        component_type="Schaltfeld",
+        failure_rate_per_year=failure_rate,
+        repair_time_hours=repair_time,
     )

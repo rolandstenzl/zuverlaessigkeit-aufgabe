@@ -64,56 +64,63 @@ def evaluate_topology_1(
 def evaluate_topology_2(
     freileitung_links_state: str,
     freileitung_rechts_state: str,
+    schaltfeld_links_state: str,
+    schaltfeld_rechts_state: str,
     kabel_1_state: str,
     kabel_2_state: str,
-    leistungsschalter_state: str,
-    trenner_state: str,
-    sammelschiene_state: str,
+    schaltfeld_kabel_1_links_state: str,
+    schaltfeld_kabel_1_rechts_state: str,
+    schaltfeld_kabel_2_links_state: str,
+    schaltfeld_kabel_2_rechts_state: str,
 ) -> TopologyResult:
-    """
-    Topologie 2:
-    - getrennte Kabelsysteme
-    - Schaltanlage vorhanden
-    - Teilbetrieb bei Ausfall eines Kabels möglich
-    """
 
-    core_states = [
-        freileitung_links_state,
-        freileitung_rechts_state,
-        leistungsschalter_state,
-        trenner_state,
-        sammelschiene_state,
-    ]
-
-    if not all(is_up(s) for s in core_states):
-        return TopologyResult(
-            is_available=False,
-            available_capacity_fraction=0.0,
-            description="Zentrale Komponente nicht verfügbar",
-        )
-
-    kabel_1_up = is_up(kabel_1_state)
-    kabel_2_up = is_up(kabel_2_state)
-
-    if kabel_1_up and kabel_2_up:
-        return TopologyResult(
-            is_available=True,
-            available_capacity_fraction=1.0,
-            description="Beide Kabel in Betrieb",
-        )
-
-    if kabel_1_up or kabel_2_up:
-        return TopologyResult(
-            is_available=True,
-            available_capacity_fraction=0.5,
-            description="Ein Kabel in Betrieb",
-        )
-
-    return TopologyResult(
-        is_available=False,
-        available_capacity_fraction=0.0,
-        description="Kein Kabel in Betrieb",
+    # -----------------------------------------------------
+    # gemeinsamer Serienpfad
+    # -----------------------------------------------------
+    common_ok = all(
+        [
+            is_up(freileitung_links_state),
+            is_up(schaltfeld_links_state),
+            is_up(schaltfeld_rechts_state),
+            is_up(freileitung_rechts_state),
+        ]
     )
+
+    if not common_ok:
+        return TopologyResult(False, 0.0, "Gemeinsamer Pfad nicht verfügbar")
+
+    # -----------------------------------------------------
+    # Zweig 1
+    # -----------------------------------------------------
+    branch_1_ok = all(
+        [
+            is_up(schaltfeld_kabel_1_links_state),
+            is_up(kabel_1_state),
+            is_up(schaltfeld_kabel_1_rechts_state),
+        ]
+    )
+
+    # -----------------------------------------------------
+    # Zweig 2
+    # -----------------------------------------------------
+    branch_2_ok = all(
+        [
+            is_up(schaltfeld_kabel_2_links_state),
+            is_up(kabel_2_state),
+            is_up(schaltfeld_kabel_2_rechts_state),
+        ]
+    )
+
+    # -----------------------------------------------------
+    # Parallelstruktur
+    # -----------------------------------------------------
+    if branch_1_ok and branch_2_ok:
+        return TopologyResult(True, 1.0, "Beide Kabelzweige verfügbar")
+
+    if branch_1_ok or branch_2_ok:
+        return TopologyResult(True, 0.5, "Ein Kabelzweig verfügbar")
+
+    return TopologyResult(False, 0.0, "Kein Kabelzweig verfügbar")
 
 
 def evaluate_topology(name: str, *args) -> TopologyResult:
