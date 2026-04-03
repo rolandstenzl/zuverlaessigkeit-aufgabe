@@ -1,3 +1,6 @@
+import os
+import sys
+
 from src.components import create_freileitung, create_kabel, create_sammelschiene
 from src.dataset import dataset_1, dataset_2, dataset_3
 from src.reliability import (
@@ -101,9 +104,29 @@ def run_topology_2_for_dataset(dataset):
 def main():
     datasets = [dataset_1, dataset_2, dataset_3]
 
-    for dataset in datasets:
-        run_topology_1_for_dataset(dataset)
-        run_topology_2_for_dataset(dataset)
+    # -------------------------------------------------
+    # results Ordner anlegen
+    # -------------------------------------------------
+    os.makedirs("results", exist_ok=True)
+
+    output_file_path = "results/analysis.txt"
+
+    # -------------------------------------------------
+    # Ausgabe umleiten (print → Datei)
+    # -------------------------------------------------
+    original_stdout = sys.stdout
+
+    with open(output_file_path, "w") as f:
+        sys.stdout = f
+
+        for dataset in datasets:
+            run_topology_1_for_dataset(dataset)
+            run_topology_2_for_dataset(dataset)
+
+        # wieder zurücksetzen
+        sys.stdout = original_stdout
+
+    print(f"Ergebnisse wurden gespeichert in: {output_file_path}")
 
 
 if __name__ == "__main__":
