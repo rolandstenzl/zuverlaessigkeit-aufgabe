@@ -1,0 +1,123 @@
+
+====================================================================================================
+Wirtschaftliche Bewertung für: Datensatz 1
+====================================================================================================
+
+##########################################################################################
+Wirtschaftliche Bewertung für: Datensatz 1
+##########################################################################################
+
+==========================================================================================
+Topologie 1
+==========================================================================================
+Jährliche Investitionskosten [EUR/a]:       0.00
+Jährlich nicht gelieferte Energie [MWh/a]:  8,132.958289
+Jährliche ENS-Kosten [EUR/a]:               2,846,535.40
+Jährliche Gesamtkosten [EUR/a]:             2,846,535.40
+
+Beitrag der Kapazitätszustände:
+  Kapazität= 1.0 | MW verfügbar= 300.000 | ENS=    0.000000 MWh/a | Kosten=          0.00 EUR/a
+  Kapazität= 0.0 | MW verfügbar=   0.000 | ENS= 8132.958289 MWh/a | Kosten=    2846535.40 EUR/a
+
+==========================================================================================
+Topologie 2
+==========================================================================================
+Jährliche Investitionskosten [EUR/a]:       1,642,761.08
+Jährlich nicht gelieferte Energie [MWh/a]:  807.621277
+Jährliche ENS-Kosten [EUR/a]:               282,667.45
+Jährliche Gesamtkosten [EUR/a]:             1,925,428.53
+
+Beitrag der Kapazitätszustände:
+  Kapazität= 1.0 | MW verfügbar= 300.000 | ENS=    0.000000 MWh/a | Kosten=          0.00 EUR/a
+  Kapazität= 0.5 | MW verfügbar= 190.526 | ENS=  766.043006 MWh/a | Kosten=     268115.05 EUR/a
+  Kapazität= 0.0 | MW verfügbar=   0.000 | ENS=   41.578272 MWh/a | Kosten=      14552.40 EUR/a
+
+##########################################################################################
+Wirtschaftlicher Vergleich Topologie 1 vs. Topologie 2
+##########################################################################################
+Topologie 1 Gesamtkosten [EUR/a]: 2,846,535.40
+Topologie 2 Gesamtkosten [EUR/a]: 1,925,428.53
+Differenz T2 - T1 [EUR/a]:        -921,106.87
+=> Wirtschaftlich günstiger: Topologie 2
+
+====================================================================================================
+Wirtschaftliche Bewertung für: Datensatz 2
+====================================================================================================
+
+##########################################################################################
+Wirtschaftliche Bewertung für: Datensatz 2
+##########################################################################################
+
+==========================================================================================
+Topologie 1
+==========================================================================================
+Jährliche Investitionskosten [EUR/a]:       0.00
+Jährlich nicht gelieferte Energie [MWh/a]:  3,318.121192
+Jährliche ENS-Kosten [EUR/a]:               1,161,342.42
+Jährliche Gesamtkosten [EUR/a]:             1,161,342.42
+
+Beitrag der Kapazitätszustände:
+  Kapazität= 1.0 | MW verfügbar= 300.000 | ENS=    0.000000 MWh/a | Kosten=          0.00 EUR/a
+  Kapazität= 0.0 | MW verfügbar=   0.000 | ENS= 3318.121192 MWh/a | Kosten=    1161342.42 EUR/a
+
+==========================================================================================
+Topologie 2
+==========================================================================================
+Jährliche Investitionskosten [EUR/a]:       1,642,761.08
+Jährlich nicht gelieferte Energie [MWh/a]:  351.159689
+Jährliche ENS-Kosten [EUR/a]:               122,905.89
+Jährliche Gesamtkosten [EUR/a]:             1,765,666.97
+
+Beitrag der Kapazitätszustände:
+  Kapazität= 1.0 | MW verfügbar= 300.000 | ENS=    0.000000 MWh/a | Kosten=          0.00 EUR/a
+  Kapazität= 0.5 | MW verfügbar= 190.526 | ENS=  310.381562 MWh/a | Kosten=     108633.55 EUR/a
+  Kapazität= 0.0 | MW verfügbar=   0.000 | ENS=   40.778127 MWh/a | Kosten=      14272.34 EUR/a
+
+##########################################################################################
+Wirtschaftlicher Vergleich Topologie 1 vs. Topologie 2
+##########################################################################################
+Topologie 1 Gesamtkosten [EUR/a]: 1,161,342.42
+Topologie 2 Gesamtkosten [EUR/a]: 1,765,666.97
+Differenz T2 - T1 [EUR/a]:        604,324.56
+=> Wirtschaftlich günstiger: Topologie 1
+
+====================================================================================================
+Wirtschaftliche Bewertung für: Datensatz 3
+====================================================================================================
+
+##########################################################################################
+Wirtschaftliche Bewertung für: Datensatz 3
+##########################################################################################
+
+==========================================================================================
+Topologie 1
+==========================================================================================
+Jährliche Investitionskosten [EUR/a]:       0.00
+Jährlich nicht gelieferte Energie [MWh/a]:  19,657.921523
+Jährliche ENS-Kosten [EUR/a]:               6,880,272.53
+Jährliche Gesamtkosten [EUR/a]:             6,880,272.53
+
+Beitrag der Kapazitätszustände:
+  Kapazität= 1.0 | MW verfügbar= 300.000 | ENS=    0.000000 MWh/a | Kosten=          0.00 EUR/a
+  Kapazität= 0.0 | MW verfügbar=   0.000 | ENS=19657.921523 MWh/a | Kosten=    6880272.53 EUR/a
+
+==========================================================================================
+Topologie 2
+==========================================================================================
+Jährliche Investitionskosten [EUR/a]:       1,642,761.08
+Jährlich nicht gelieferte Energie [MWh/a]:  1,899.819441
+Jährliche ENS-Kosten [EUR/a]:               664,936.80
+Jährliche Gesamtkosten [EUR/a]:             2,307,697.89
+
+Beitrag der Kapazitätszustände:
+  Kapazität= 1.0 | MW verfügbar= 300.000 | ENS=    0.000000 MWh/a | Kosten=          0.00 EUR/a
+  Kapazität= 0.5 | MW verfügbar= 190.526 | ENS= 1856.772514 MWh/a | Kosten=     649870.38 EUR/a
+  Kapazität= 0.0 | MW verfügbar=   0.000 | ENS=   43.046927 MWh/a | Kosten=      15066.42 EUR/a
+
+##########################################################################################
+Wirtschaftlicher Vergleich Topologie 1 vs. Topologie 2
+##########################################################################################
+Topologie 1 Gesamtkosten [EUR/a]: 6,880,272.53
+Topologie 2 Gesamtkosten [EUR/a]: 2,307,697.89
+Differenz T2 - T1 [EUR/a]:        -4,572,574.65
+=> Wirtschaftlich günstiger: Topologie 2
