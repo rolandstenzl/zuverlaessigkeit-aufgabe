@@ -357,6 +357,8 @@ def analyze_topology_2(
     freileitung_rechts: Component,
     schaltfeld_links: Component,
     schaltfeld_rechts: Component,
+    sammelschiene_links: Component,
+    sammelschiene_rechts: Component,
     kabel_1: Component,
     kabel_2: Component,
     schaltfeld_kabel_1_links: Component,
@@ -370,6 +372,7 @@ def analyze_topology_2(
     Komponenten:
     - Freileitung links / rechts
     - gemeinsames Schaltfeld links / rechts
+    - Sammelschiene links / rechts
     - Kabelzweig 1: Schaltfeld links - Kabel 1 - Schaltfeld rechts
     - Kabelzweig 2: Schaltfeld links - Kabel 2 - Schaltfeld rechts
 
@@ -383,6 +386,8 @@ def analyze_topology_2(
         "freileitung_rechts": freileitung_rechts,
         "schaltfeld_links": schaltfeld_links,
         "schaltfeld_rechts": schaltfeld_rechts,
+        "sammelschiene_links": sammelschiene_links,
+        "sammelschiene_rechts": sammelschiene_rechts,
         "kabel_1": kabel_1,
         "kabel_2": kabel_2,
         "schaltfeld_kabel_1_links": schaltfeld_kabel_1_links,
@@ -413,6 +418,8 @@ def analyze_topology_2(
         component_state_lists["freileitung_rechts"],
         component_state_lists["schaltfeld_links"],
         component_state_lists["schaltfeld_rechts"],
+        component_state_lists["sammelschiene_links"],
+        component_state_lists["sammelschiene_rechts"],
         component_state_lists["kabel_1"],
         component_state_lists["kabel_2"],
         component_state_lists["schaltfeld_kabel_1_links"],
@@ -426,6 +433,8 @@ def analyze_topology_2(
         freileitung_rechts_state,
         schaltfeld_links_state,
         schaltfeld_rechts_state,
+        sammelschiene_links_state,
+        sammelschiene_rechts_state,
         kabel_1_state,
         kabel_2_state,
         schaltfeld_kabel_1_links_state,
@@ -440,6 +449,8 @@ def analyze_topology_2(
             "freileitung_rechts": freileitung_rechts_state,
             "schaltfeld_links": schaltfeld_links_state,
             "schaltfeld_rechts": schaltfeld_rechts_state,
+            "sammelschiene_links": sammelschiene_links_state,
+            "sammelschiene_rechts": sammelschiene_rechts_state,
             "kabel_1": kabel_1_state,
             "kabel_2": kabel_2_state,
             "schaltfeld_kabel_1_links": schaltfeld_kabel_1_links_state,
@@ -461,6 +472,8 @@ def analyze_topology_2(
             freileitung_rechts_state=state["freileitung_rechts"],
             schaltfeld_links_state=state["schaltfeld_links"],
             schaltfeld_rechts_state=state["schaltfeld_rechts"],
+            sammelschiene_links_state=state["sammelschiene_links"],
+            sammelschiene_rechts_state=state["sammelschiene_rechts"],
             kabel_1_state=state["kabel_1"],
             kabel_2_state=state["kabel_2"],
             schaltfeld_kabel_1_links_state=state["schaltfeld_kabel_1_links"],
@@ -549,9 +562,9 @@ def print_topology_2_states(result: Topology2AnalysisResult, limit: int = 20) ->
     """
     Gibt die ersten Zustände zur Kontrolle aus.
     """
-    print("\n" + "=" * 110)
+    print("\n" + "=" * 120)
     print(f"Erste {limit} Zustände Topologie 2")
-    print("=" * 110)
+    print("=" * 120)
 
     for i, evaluation in enumerate(result.state_evaluations[:limit], start=1):
         state = evaluation.state
@@ -559,12 +572,14 @@ def print_topology_2_states(result: Topology2AnalysisResult, limit: int = 20) ->
             f"{i:>2d}. "
             f"FL links={state['freileitung_links']}, "
             f"SF links={state['schaltfeld_links']}, "
+            f"SS links={state['sammelschiene_links']}, "
             f"K1-SF links={state['schaltfeld_kabel_1_links']}, "
             f"K1={state['kabel_1']}, "
             f"K1-SF rechts={state['schaltfeld_kabel_1_rechts']}, "
             f"K2-SF links={state['schaltfeld_kabel_2_links']}, "
             f"K2={state['kabel_2']}, "
             f"K2-SF rechts={state['schaltfeld_kabel_2_rechts']}, "
+            f"SS rechts={state['sammelschiene_rechts']}, "
             f"SF rechts={state['schaltfeld_rechts']}, "
             f"FL rechts={state['freileitung_rechts']} | "
             f"P={evaluation.probability:.8f} | "

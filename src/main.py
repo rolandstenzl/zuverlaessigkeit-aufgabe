@@ -62,17 +62,28 @@ def run_topology_2_for_dataset(dataset):
     kabel_2 = create_kabel("Kabel 2", dataset, length_km=10.0)
 
     # -------------------------------------------------
-    # Vereinfachte Modellierung der Schaltgeräte
-    # (empfohlen: aggregierte Schaltfelder)
+    # Gemeinsame Schaltfelder
     # -------------------------------------------------
     schaltfeld_links = create_sammelschiene("Schaltfeld links", dataset)
     schaltfeld_rechts = create_sammelschiene("Schaltfeld rechts", dataset)
 
+    # -------------------------------------------------
+    # Sammelschienen links / rechts
+    # -------------------------------------------------
+    sammelschiene_links = create_sammelschiene("Sammelschiene links", dataset)
+    sammelschiene_rechts = create_sammelschiene("Sammelschiene rechts", dataset)
+
+    # -------------------------------------------------
+    # Kabelzweig 1
+    # -------------------------------------------------
     schaltfeld_kabel_1_links = create_sammelschiene("Schaltfeld Kabel 1 links", dataset)
     schaltfeld_kabel_1_rechts = create_sammelschiene(
         "Schaltfeld Kabel 1 rechts", dataset
     )
 
+    # -------------------------------------------------
+    # Kabelzweig 2
+    # -------------------------------------------------
     schaltfeld_kabel_2_links = create_sammelschiene("Schaltfeld Kabel 2 links", dataset)
     schaltfeld_kabel_2_rechts = create_sammelschiene(
         "Schaltfeld Kabel 2 rechts", dataset
@@ -86,6 +97,8 @@ def run_topology_2_for_dataset(dataset):
         freileitung_rechts=freileitung_rechts,
         schaltfeld_links=schaltfeld_links,
         schaltfeld_rechts=schaltfeld_rechts,
+        sammelschiene_links=sammelschiene_links,
+        sammelschiene_rechts=sammelschiene_rechts,
         kabel_1=kabel_1,
         kabel_2=kabel_2,
         schaltfeld_kabel_1_links=schaltfeld_kabel_1_links,
