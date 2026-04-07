@@ -1,0 +1,367 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amssymb}
+\DeclareMathOperator{\cof}{Cof} % Cofaktormatrix
+\DeclareMathOperator{\adj}{Adj} % Adjunkte Matrix
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[most]{tcolorbox} % lädt tcolorbox mit allen Libraries
+\definecolor{violet}{RGB}{100, 0, 180}
+\definecolor{yellow}{RGB}{5, 95, 150}
+\usepackage{float}
+\usepackage{bm}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\sisetup{per-mode = symbol} % statt s^{-1} bekommst du "/s"
+
+\allowdisplaybreaks
+\setlength{\parindent}{0pt}
+\setlist[itemize]{noitemsep}
+
+% Ich will, dass nach einem paragraph ein Zeilenumbruch stattfindet. Das macht dieses makro. (GPT)
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+	{1.5ex \@plus .5ex \@minus .2ex}% Abstand davor
+	{1.0ex \@plus .2ex}%  << positiv => neue Zeile/Abstand danach
+	{\normalfont\normalsize\bfseries}}% Stil
+\makeatother
+
+%% Eigene t-colorboxen
+% Eigene Umgebung für Angabe-Box
+\newtcolorbox{antwortbox}{
+	colback=white,
+	colframe=green!60!black,
+	title=Antwort
+}
+
+% Eigene Umgebung für Angabe-Box
+\newtcolorbox{angabebox}{
+	colback=white,
+	colframe=black,
+	title=Angabe
+}
+
+% Eigene Umgebung für Formelsammlung-Box
+\newtcolorbox{formelbox}{
+	colback=white,
+	colframe=orange,
+	title=Formelsammlung
+}
+
+% Eigene Umgebung für Merken-Box
+\newtcolorbox{merkebox}{
+	colback=white,
+	colframe=violet,
+	title=Merken
+}
+
+% Eigene Umgebung für TODO-Box
+\newtcolorbox{todobox}{
+	colback=white,
+	colframe=blue,
+	title=TODO
+}
+
+% kompakter „File-Tag“ wie \fcolorbox{gray}{lightgray}{\texttt{…}}
+\newcommand{\filebox}[1]{%
+	\begingroup
+	\setlength{\fboxrule}{0.6pt}% Rahmenstärke
+	\setlength{\fboxsep}{1.5pt}% Innenabstand
+	\fcolorbox{gray}{lightgray}{\texttt{#1}}%
+	\endgroup
+}
+% Nutzung: \filebox{Inverse\_Matrix.md}
+
+% Hantelzeichen für Transformationen
+\newcommand{\hantel}{\mathrel{\circ\!\!-\!\!\bullet}}     % links leer, rechts gefüllt
+\newcommand{\hantelrev}{\mathrel{\bullet\!\!-\!\!\circ}}  % links gefüllt, rechts leer
+
+\title{Energiesysteme - Vertiefung\\
+    \large Hausübung - 1 \\
+    \large Zuverlässigkeitsberechnung einer Freileitung - Erdkabel - Übertragungsstrecke}
+\author{Roland Stenzl}
+% \date{\today}
+
+\begin{document}
+\maketitle
+
+\vspace{0.5cm}
+
+
+\section{Einleitung}
+Die Zuverlässigkeit elektrischer Energiesysteme stellt ein zentrales Kriterium
+für die sichere und wirtschaftliche Versorgung von Verbrauchern dar.
+Insbesondere in Übertragungsnetzen kann der Ausfall einzelner Betriebsmittel
+erhebliche Auswirkungen auf die verfügbare Übertragungskapazität und damit auf
+die Versorgungssicherheit haben. Vor diesem Hintergrund ist es notwendig,
+unterschiedliche Systemtopologien hinsichtlich ihrer technischen
+Zuverlässigkeit sowie ihrer wirtschaftlichen Auswirkungen zu bewerten.
+
+In dieser Arbeit werden zwei Varianten einer Kabelübergabestation (KÜS)
+analysiert, die sich insbesondere in ihrer Redundanz und Schaltanlagenstruktur
+unterscheiden. Ziel ist es, die Nicht-Verfügbarkeit der Übertragungsstrecke
+sowie die Wahrscheinlichkeitsverteilung der verfügbaren Übertragungskapazität
+für beide Topologien zu bestimmen. Aufbauend darauf erfolgt eine
+wirtschaftliche Bewertung, bei der die zusätzlichen Investitionskosten für
+Schaltanlagen den Kosten gegenübergestellt werden, die durch nicht übertragbare
+Energie entstehen.
+
+Die Analyse erfolgt auf Basis eines probabilistischen Modells, bei dem die
+Zustände einzelner Komponenten sowie deren Kombinationen systematisch
+ausgewertet werden. Auf Grundlage der gewonnenen Ergebnisse wird abschließend
+eine fundierte Entscheidung hinsichtlich der bevorzugten Topologie getroffen.
+
+\section{Aufgabenstellung} 
+
+Ziel dieser Arbeit ist die vergleichende Analyse
+zweier unterschiedlicher Topologien einer Kabelübergabestation (KÜS)
+hinsichtlich ihrer Zuverlässigkeit und Wirtschaftlichkeit. Beide Systeme
+unterscheiden sich insbesondere in der Ausführung der Schaltanlagen sowie in
+der Möglichkeit, Teilsysteme im Fehlerfall weiter zu betreiben.
+
+Für beide Topologien sind auf Basis gegebener Zuverlässigkeitskenngrößen die
+Nicht-Verfügbarkeit der Übertragungsstrecke sowie die Wahrscheinlichkeiten der
+verfügbaren Übertragungskapazität zu bestimmen. Dabei wird insbesondere
+untersucht, mit welcher Wahrscheinlichkeit die volle, reduzierte oder keine
+Übertragungskapazität zur Verfügung steht.
+
+Aufbauend auf diesen Ergebnissen erfolgt eine wirtschaftliche Bewertung der
+beiden Systeme. Hierbei werden die jährlichen Zusatzkosten für die Errichtung
+der Schaltanlagen der KÜS den Kosten gegenübergestellt, die durch nicht
+übertragbare elektrische Energie entstehen. Grundlage hierfür bildet ein
+vorgegebenes Erzeugungsprofil sowie spezifische Kosten pro nicht gelieferter
+Energieeinheit.
+
+Abschließend ist auf Basis der technischen und wirtschaftlichen Ergebnisse eine
+begründete Entscheidung zu treffen, welche der beiden Topologien vorzuziehen
+ist. Zusätzlich wird untersucht, wie sich die Entscheidung verändert, wenn die
+Kosten für Kapazitätseinschränkungen vernachlässigt werden. 
+
+\section{Methodik}
+
+Im Folgenden wird die methodische Vorgehensweise zur Modellierung, Analyse und
+Bewertung der betrachteten Topologien beschrieben. 
+
+\subsection{Modellierung der Komponenten} 
+
+Für die Analyse der Zuverlässigkeit der betrachteten Topologien werden die
+wesentlichen Betriebsmittel der Übertragungsstrecke als einzelne Komponenten
+modelliert. Jede Komponente wird durch ihre Ausfallrate sowie die mittlere
+Reparaturdauer beschrieben, woraus sich die Nicht-Verfügbarkeit ableiten lässt.
+
+\paragraph{Freileitung}
+Freileitungen stellen die Verbindung zwischen der Kabelübergabestation und dem
+übergeordneten Netz dar. Sie werden als längenabhängige Komponenten modelliert,
+deren Ausfallrate proportional zur Leitungslänge ist. Aufgrund ihrer
+exponierten Lage weisen sie im Vergleich zu Kabelsystemen in der Regel höhere
+Ausfallraten auf.
+
+\paragraph{Kabel}
+Die Kabel bilden den zentralen Bestandteil der Übertragungsstrecke innerhalb
+der Kabelübergabestation. Analog zu den Freileitungen werden sie als
+längenabhängige Komponenten modelliert. Zusätzlich wird bei Kabeln auch die
+geplante Wartung berücksichtigt, wodurch neben Ausfallzuständen auch
+Wartungszustände in die Analyse eingehen.
+
+\paragraph{Schaltfelder}
+Schaltfelder ermöglichen das gezielte Zu- und Abschalten einzelner Anlagenteile
+und sind insbesondere für die Entkopplung paralleler Systeme von Bedeutung. In
+der vorliegenden Arbeit werden Schaltfelder als Kombination mehrerer in Serie
+geschalteter Einzelkomponenten modelliert:
+
+\begin{itemize}
+    \item \textbf{Trenner}: Dienen zur galvanischen Trennung von Anlagenteilen
+        im spannungslosen Zustand. Sie weisen vergleichsweise geringe
+        Ausfallraten auf.
+    \item \textbf{Leistungsschalter}: Ermöglichen das Schalten von Last- und
+        Kurzschlussströmen und stellen somit eine zentrale Komponente für den
+        sicheren Netzbetrieb dar.
+    \item \textbf{Trenner}: Ein zweiter Trenner wird zur vollständigen
+        Isolation des Anlagenteils eingesetzt.
+\end{itemize}
+
+Da diese Komponenten in Serie geschaltet sind, führt der Ausfall eines einzelnen Elements zum Ausfall des gesamten Schaltfeldes.
+
+\paragraph{Sammelschienen}
+Sammelschienen dienen als zentrale Knotenpunkte innerhalb der Schaltanlage und
+ermöglichen die Verbindung mehrerer Stromkreise. Sie werden als eigenständige
+Komponenten modelliert, deren Ausfall zum Ausfall aller angeschlossenen Zweige
+führen kann, da sie im gemeinsamen Pfad der Energieübertragung liegen.
+Definition der Nichtverfügbarkeit:
+
+\paragraph{Zuverlässigkeitskenngrößen}
+
+Zur quantitativen Beschreibung der Komponenten werden die Ausfallrate $H$
+in Ausfällen pro Jahr sowie die mittlere Reparaturdauer $T$ in Stunden
+verwendet. Aus diesen Größen wird die Nicht-Verfügbarkeit $NV$ der jeweiligen
+Komponente berechnet:
+
+\begin{equation}
+NV = \frac{H \cdot T}{8760}
+\end{equation}
+
+Dabei entspricht $8760$ der Anzahl der Stunden eines Jahres. Die
+Nicht-Verfügbarkeit beschreibt den Anteil der Zeit, in der eine Komponente im
+Mittel nicht zur Verfügung steht.
+
+\paragraph{Längenabhängige Modellierung}
+
+Für Freileitungen und Kabel wird angenommen, dass die Ausfallrate proportional
+zur Leitungslänge ist. Die gesamte Ausfallrate ergibt sich somit aus der
+spezifischen Ausfallrate pro Kilometer und der jeweiligen Leitungslänge:
+
+\begin{equation}
+H_{\text{gesamt}} = H_{\text{pro km}} \cdot L
+\end{equation}
+
+Dadurch wird berücksichtigt, dass längere Leitungen eine höhere
+Ausfallwahrscheinlichkeit aufweisen.
+
+\paragraph{Berücksichtigung von Wartung}
+
+Für Kabelsysteme wird zusätzlich zur zufälligen Ausfallwahrscheinlichkeit auch
+geplante Wartung berücksichtigt. Diese führt zu einem weiteren Anteil an
+Nicht-Verfügbarkeit, der zur gesamten Nicht-Verfügbarkeit addiert wird. Somit
+ergibt sich die Gesamt-Nicht-Verfügbarkeit aus:
+
+\begin{equation}
+NV_{\text{gesamt}} = NV_{\text{Ausfall}} + NV_{\text{Wartung}}
+\end{equation}
+
+Dabei wird angenommen, dass Wartungsmaßnahmen unabhängig von zufälligen
+Ausfällen auftreten.
+
+\subsection{Zustandsmodell}
+
+Zur Analyse der Systemzuverlässigkeit wird jede Komponente durch ein diskretes
+Zustandsmodell beschrieben. Dabei kann sich jede Komponente in einem von
+mehreren möglichen Zuständen befinden, die ihren aktuellen Betriebszustand
+repräsentieren.
+
+Grundsätzlich werden folgende Zustände unterschieden:
+\begin{itemize}
+    \item \texttt{up}: Die Komponente ist vollständig funktionsfähig und steht
+        für die Energieübertragung zur Verfügung.
+    \item \texttt{failed}: Die Komponente ist infolge eines ungeplanten
+        Ausfalls nicht verfügbar.
+    \item \texttt{maintenance}: Die Komponente ist aufgrund geplanter
+        Wartungsmaßnahmen nicht verfügbar.
+\end{itemize}
+
+Für Komponenten ohne geplante Wartung, wie beispielsweise Freileitungen oder
+Sammelschienen, werden ausschließlich die Zustände \texttt{up} und
+\texttt{failed} berücksichtigt. Für Kabel hingegen wird zusätzlich der
+Wartungszustand modelliert, da diese regelmäßig geplanten
+Instandhaltungsmaßnahmen unterliegen.
+
+Die Wahrscheinlichkeiten der einzelnen Zustände werden aus den zuvor
+definierten Zuverlässigkeitskenngrößen abgeleitet. Dabei ergibt sich für jede
+Komponente:
+
+\begin{equation}
+P(\text{up}) = 1 - P(\text{failed}) - P(\text{maintenance})
+\end{equation}
+
+Die Wahrscheinlichkeit eines Ausfallzustands entspricht dabei der
+Nicht-Verfügbarkeit infolge zufälliger Ausfälle, während die
+Wartungswahrscheinlichkeit aus den geplanten Wartungsintervallen und -dauern
+bestimmt wird.
+
+Für die Analyse des Gesamtsystems wird angenommen, dass die Zustände der
+einzelnen Komponenten statistisch unabhängig sind. Dadurch kann die
+Wahrscheinlichkeit eines Gesamtzustands als Produkt der
+Einzelwahrscheinlichkeiten berechnet werden:
+
+\begin{equation}
+P(\text{Systemzustand}) = \prod_i P_i
+\end{equation}
+
+Zur Bestimmung der Systemzuverlässigkeit werden alle möglichen Kombinationen
+der Einzelzustände vollständig enumeriert. Für jeden dieser Zustände wird
+anschließend anhand der jeweiligen Topologie bewertet, ob und in welchem Umfang
+die Übertragungskapazität zur Verfügung steht.
+
+Zusätzlich wird berücksichtigt, dass Wartungsmaßnahmen nicht gleichzeitig an
+beiden Kabelsystemen durchgeführt werden. Zustände, in denen beide Kabel
+gleichzeitig im Wartungszustand sind, werden daher als unzulässig
+ausgeschlossen.
+
+\subsection{Topologien}
+
+\subsubsection{Topologie 1}
+Beschreibung der seriellen Struktur ohne Entkopplung.
+
+\subsubsection{Topologie 2}
+Beschreibung der parallelen Kabelzweige mit Schaltanlage und Teilbetrieb.
+
+\subsection{Berechnungsmethode}
+Beschreibung der Zustandsenumeration:
+\begin{equation}
+P(\text{Zustand}) = \prod_i P_i
+\end{equation}
+
+Auswertung jedes Zustands hinsichtlich verfügbarer Kapazität.
+
+\subsection{Wirtschaftliche Bewertung}
+\begin{itemize}
+    \item Annuitätenberechnung der Investitionskosten
+    \item Kosten nicht gelieferter Energie
+    \item Berücksichtigung des Erzeugungsprofils
+\end{itemize}
+
+\section{Ergebnisse}
+
+\subsection{Topologie 1}
+\begin{itemize}
+    \item Nicht-Verfügbarkeit
+    \item Kapazitätsverteilung
+\end{itemize}
+
+\subsection{Topologie 2}
+\begin{itemize}
+    \item Nicht-Verfügbarkeit
+    \item Kapazitätsverteilung
+\end{itemize}
+
+\subsection{Wirtschaftlicher Vergleich}
+Darstellung der jährlichen Kosten beider Topologien:
+\begin{itemize}
+    \item Investitionskosten
+    \item Kosten durch Nicht-Verfügbarkeit
+    \item Gesamtkosten
+\end{itemize}
+
+\section{Diskussion}
+Interpretation der Ergebnisse:
+\begin{itemize}
+    \item Einfluss der Topologie auf die Zuverlässigkeit
+    \item Bedeutung der Redundanz
+    \item Einfluss der Wartung
+\end{itemize}
+
+\section{Entscheidung}
+Begründete Auswahl der optimalen Topologie basierend auf:
+\begin{itemize}
+    \item Wirtschaftlichkeit
+    \item Zuverlässigkeit
+\end{itemize}
+
+Zusatzbetrachtung:
+\begin{itemize}
+    \item Entscheidung ohne Berücksichtigung von Kapazitätseinschränkungskosten
+\end{itemize}
+
+\section{Fazit}
+Zusammenfassung der wichtigsten Erkenntnisse und abschließende Bewertung.
+
+\section*{Anhang}
+Optional:
+\begin{itemize}
+    \item Tabellen
+    \item zusätzliche Berechnungen
+    \item Code-Auszüge
+\end{itemize}
+
+
+\end{document}
