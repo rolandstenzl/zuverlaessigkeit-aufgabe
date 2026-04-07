@@ -166,22 +166,51 @@ Wartungszustände in die Analyse eingehen.
 
 \paragraph{Schaltfelder}
 Schaltfelder ermöglichen das gezielte Zu- und Abschalten einzelner Anlagenteile
-und sind insbesondere für die Entkopplung paralleler Systeme von Bedeutung. In
-der vorliegenden Arbeit werden Schaltfelder als Kombination mehrerer in Serie
+und werden in Topologie 2 verwendet. In der vorliegenden Arbeit werden
+Schaltfelder als Kombination mehrerer in Serie
 geschalteter Einzelkomponenten modelliert:
 
 \begin{itemize}
     \item \textbf{Trenner}: Dienen zur galvanischen Trennung von Anlagenteilen
-        im spannungslosen Zustand. Sie weisen vergleichsweise geringe
-        Ausfallraten auf.
+        im spannungslosen Zustand.
     \item \textbf{Leistungsschalter}: Ermöglichen das Schalten von Last- und
-        Kurzschlussströmen und stellen somit eine zentrale Komponente für den
-        sicheren Netzbetrieb dar.
+        Kurzschlussströmen.
     \item \textbf{Trenner}: Ein zweiter Trenner wird zur vollständigen
         Isolation des Anlagenteils eingesetzt.
 \end{itemize}
 
-Da diese Komponenten in Serie geschaltet sind, führt der Ausfall eines einzelnen Elements zum Ausfall des gesamten Schaltfeldes.
+Da bei einer Serienschaltung der Ausfall
+einer einzelnen Komponente zum Ausfall des gesamten Systems führt,
+ergibt sich die äquivalente Ausfallrate des Schaltfelds als Summe der
+Einzelausfallraten:
+
+\begin{equation}
+H_{\text{SF}} = H_1 + H_2 + H_3
+\end{equation}
+
+Die Nicht-Verfügbarkeit des Schaltfelds ergibt sich aus der Summe der
+Nicht-Verfügbarkeiten der Einzelkomponenten:
+
+\begin{equation}
+NV_{\text{SF}} = \frac{H_1 T_1 + H_2 T_2 + H_3 T_3}{8760}
+\end{equation}
+
+Zur Beschreibung des Schaltfelds als äquivalente Ersatzkomponente wird
+eine effektive Reparaturdauer definiert, sodass gilt:
+
+\begin{equation}
+NV_{\text{SF}} = \frac{H_{\text{SF}} \cdot T_{\text{SF}}}{8760}
+\end{equation}
+
+Daraus folgt für die äquivalente Reparaturdauer:
+
+\begin{equation}
+T_{\text{SF}} = \frac{H_1 T_1 + H_2 T_2 + H_3 T_3}{H_1 + H_2 + H_3}
+\end{equation}
+
+Damit wird das Schaltfeld durch eine einzelne Ersatzkomponente beschrieben,
+die hinsichtlich ihrer Nicht-Verfügbarkeit äquivalent zum ursprünglichen
+Seriensystem ist.
 
 \paragraph{Sammelschienen}
 Sammelschienen dienen als zentrale Knotenpunkte innerhalb der Schaltanlage und
