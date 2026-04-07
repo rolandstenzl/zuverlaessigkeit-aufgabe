@@ -29,8 +29,7 @@ def evaluate_topology_1(
     Topologie 1:
     - Doppelkabel ohne Schaltgeräte
     - keine selektive Abschaltung einzelner Systeme
-    - konservatives Anfangsmodell:
-      sobald eine Komponente nicht 'up' ist -> Totalausfall
+    - Modell: Ausfall einer Komponente -> Totalausfall
     """
 
     states = [
@@ -88,7 +87,7 @@ def evaluate_topology_2(
     -> Schaltfeld rechts
     -> Freileitung rechts
 
-    Interpretation:
+    Aufbau:
     - Alles vor der Verzweigung und nach der Zusammenführung liegt in Serie
     - Die beiden Kabelzweige liegen parallel
     - Fällt ein Zweig aus, bleibt 50 % Kapazität
@@ -98,6 +97,8 @@ def evaluate_topology_2(
     # -----------------------------------------------------
     # Gemeinsamer Serienpfad
     # -----------------------------------------------------
+
+    # Sind alle seriellen Bauteile up?
     common_ok = all(
         [
             is_up(freileitung_links_state),

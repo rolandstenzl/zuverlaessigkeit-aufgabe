@@ -74,7 +74,11 @@ class Component:
         Gesamtnichtverfügbarkeit als Summe aus Fehler- und Wartungsanteil.
         Für dieses einfache Anfangsmodell additiv.
         """
-        return self.nv_failure + self.nv_maintenance
+        return (
+            self.nv_failure
+            + self.nv_maintenance
+            - (self.nv_failure * self.nv_maintenance)
+        )
 
     @property
     def availability(self) -> float:
@@ -101,6 +105,9 @@ class Component:
 def create_freileitung(
     name: str, dataset: ReliabilityDataset, length_km: float
 ) -> Component:
+    """
+    Fehlerrate im Jahr ist bei der Freileitung auf km bezogen.
+    """
     return Component(
         name=name,
         component_type="Freileitung",
@@ -111,6 +118,9 @@ def create_freileitung(
 
 
 def create_kabel(name: str, dataset: ReliabilityDataset, length_km: float) -> Component:
+    """
+    Fehlerrate im Jahr ist bei dem Kabel auf km bezogen.
+    """
     return Component(
         name=name,
         component_type="Erdkabel",
