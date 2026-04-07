@@ -161,27 +161,38 @@ def create_sammelschiene(name: str, dataset: ReliabilityDataset) -> Component:
 
 def create_schaltfeld(name: str, dataset: ReliabilityDataset) -> Component:
     """
-    Schaltfeld = Trenner + Leistungsschalter + Trenner (Serie)
+    Schaltfeld = Trenner + Leistungsschalter + Trenner (Seriensystem)
+
+    Modellierung als äquivalente Ersatzkomponente:
+    - äquivalente Ausfallhäufigkeit = Summe der Ausfallhäufigkeiten
+    - äquivalente Reparaturdauer = ausfallratengewichteter Mittelwert
+
+    Dadurch ergibt sich für das Ersatzobjekt exakt dieselbe
+    Nicht-Verfügbarkeit wie für das Seriensystem der drei Komponenten.
     """
 
-    # Ausfall-NV summieren (Serienannahme)
-    nv_failure = (
-        (dataset.H_trenner * dataset.T_trenner_h)
-        + (dataset.H_leistungsschalter * dataset.T_leistungsschalter_h)
-        + (dataset.H_trenner * dataset.T_trenner_h)
-    ) / 8760.0
+    # Einzelkomponenten
+    h1 = dataset.H_trenner
+    t1 = dataset.T_trenner_h
 
-    # daraus wieder äquivalente Ausfallrate ableiten
-    # (wir setzen T = gewichteter Mittelwert, einfache Näherung)
-    failure_rate = dataset.H_trenner + dataset.H_leistungsschalter + dataset.H_trenner
+    h2 = dataset.H_leistungsschalter
+    t2 = dataset.T_leistungsschalter_h
 
-    repair_time = (
-        dataset.T_trenner_h + dataset.T_leistungsschalter_h + dataset.T_trenner_h
-    ) / 3.0
+    h3 = dataset.H_trenner
+    t3 = dataset.T_trenner_h
+
+    # Äquivalente Ausfallhäufigkeit
+    failure_rate_eq = h1 + h2 + h3
+
+    if failure_rate_eq <= 0:
+        repair_time_eq = 0.0
+    else:
+        # Ausfallratengewichteter Mittelwert der Reparaturdauer
+        repair_time_eq = (h1 * t1 + h2 * t2 + h3 * t3) / failure_rate_eq
 
     return Component(
         name=name,
         component_type="Schaltfeld",
-        failure_rate_per_year=failure_rate,
-        repair_time_hours=repair_time,
+        failure_rate_per_year=failure_rate_eq,
+        repair_time_hours=repair_time_eq,
     )
