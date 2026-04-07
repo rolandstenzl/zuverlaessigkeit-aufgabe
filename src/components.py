@@ -31,6 +31,7 @@ class Component:
     @property
     def maintenance_frequency_per_year(self) -> float:
         """
+        Umrechnung (nur für Kabel)
         Wartungshäufigkeit H_w [1/a]
         Beispiel: Intervall 5 a -> H_w = 1/5 = 0.2 1/a
         """
@@ -41,8 +42,8 @@ class Component:
     @property
     def maintenance_duration_hours(self) -> float:
         """
+        Umrechnung (Nur für Kabel)
         Wartungsdauer pro Ereignis in Stunden.
-        Nur relevant für längenabhängige Komponenten wie Kabel.
         """
         if self.length_km <= 0 or self.maintenance_duration_days_per_km <= 0:
             return 0.0
@@ -52,13 +53,14 @@ class Component:
     def nv_failure(self) -> float:
         """
         Nichtverfügbarkeit durch ungeplante Ausfälle, dimensionslos.
-        NV = H * T / 8760
+        NV_f = H_f * T_f / 8760
         """
         return (self.failure_rate_per_year * self.repair_time_hours) / 8760.0
 
     @property
     def nv_maintenance(self) -> float:
         """
+        Nur für Kabel
         Nichtverfügbarkeit durch Wartung, dimensionslos.
         NV_w = H_w * T_w / 8760
         """

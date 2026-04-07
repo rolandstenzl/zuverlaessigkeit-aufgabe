@@ -76,7 +76,7 @@ def is_valid_topology_1_state(state: Dict[str, str]) -> bool:
     Filtert unzulässige Zustände.
 
     Laut Aufgabenstellung:
-    - nur ein Kabel gleichzeitig in Wartung
+    Es kann sich nur ein Kabel gleichzeitig in Wartung befinden!
     """
     kabel_1_maintenance = state["kabel_1"] == "maintenance"
     kabel_2_maintenance = state["kabel_2"] == "maintenance"
