@@ -317,27 +317,172 @@ gleichzeitig im Wartungszustand sind, werden daher als unzulässig
 ausgeschlossen.
 
 \subsection{Topologien}
+Zur Bewertung der Systemzuverlässigkeit werden im Folgenden die zugrunde
+liegenden Topologien definiert und ihre strukturellen Zusammenhänge
+dargestellt.
 
 \subsubsection{Topologie 1}
-Beschreibung der seriellen Struktur ohne Entkopplung.
+
+Topologie 1 beschreibt eine einfache Übertragungsstruktur ohne
+Schaltmöglichkeiten innerhalb der Kabelübergabestation. Die
+Übertragungsstrecke besteht aus einer Freileitung, einer Sammelschiene,
+zwei parallel geführten Kabeln, einer weiteren Sammelschiene sowie einer
+abschließenden Freileitung.
+
+Aufgrund fehlender Schaltgeräte ist keine selektive Abschaltung einzelner
+Teilkomponenten möglich. Insbesondere können die beiden parallel geführten
+Kabel im Fehler- oder Wartungsfall nicht voneinander entkoppelt werden.
+Daraus folgt, dass ein Ausfall oder eine Wartung eines einzelnen Kabels
+die gesamte Übertragungsstrecke beeinflusst.
+
+Die Topologie wird daher als rein serielles System modelliert, bei dem alle
+Komponenten für eine erfolgreiche Energieübertragung verfügbar sein müssen.
+Bereits der Ausfall einer einzelnen Komponente führt zu einem vollständigen
+Ausfall der Übertragungsstrecke.
+
+Folglich stehen in dieser Topologie ausschließlich zwei Betriebszustände
+zur Verfügung:
+\begin{itemize}
+    \item volle Übertragungskapazität bei vollständig verfügbarem System,
+    \item keine Übertragungskapazität im Fehler- oder Wartungsfall.
+\end{itemize}
 
 \subsubsection{Topologie 2}
-Beschreibung der parallelen Kabelzweige mit Schaltanlage und Teilbetrieb.
+
+Topologie 2 erweitert die Übertragungsstruktur um zusätzliche
+Schaltanlagen, wodurch eine selektive Zu- und Abschaltung einzelner
+Systemteile möglich wird. Die Übertragungsstrecke besteht aus einer
+Freileitung, einem Schaltfeld, einer Sammelschiene, zwei parallel
+geführten Kabelzweigen mit jeweils eigenen Schaltfeldern, einer zweiten
+Sammelschiene, einem weiteren Schaltfeld sowie einer abschließenden
+Freileitung.
+
+Im Gegensatz zu Topologie 1 sind die beiden Kabelsysteme elektrisch
+entkoppelt und können unabhängig voneinander betrieben werden. Dadurch
+ist es möglich, im Fehler- oder Wartungsfall eines Kabelzweigs den
+verbleibenden Zweig weiterhin zu betreiben.
+
+Strukturell lässt sich die Topologie in einen gemeinsamen seriellen Pfad
+sowie zwei parallele Übertragungszweige unterteilen. Der gemeinsame Pfad
+umfasst alle Komponenten vor der Aufteilung sowie nach der
+Zusammenführung der Kabelzweige. Ein Ausfall in diesem Bereich führt
+unabhängig vom Zustand der Kabelzweige zu einem vollständigen Ausfall der
+Übertragungsstrecke.
+
+Die beiden Kabelzweige hingegen sind parallel geschaltet. Für jeden Zweig
+gilt, dass alle zugehörigen Komponenten – bestehend aus Schaltfeldern und
+Kabel – funktionsfähig sein müssen, damit dieser Zweig zur
+Energieübertragung beitragen kann.
+
+Daraus ergeben sich drei mögliche Betriebszustände:
+\begin{itemize}
+    \item volle Übertragungskapazität, wenn beide Kabelzweige verfügbar sind,
+    \item reduzierte Übertragungskapazität bei Ausfall eines Kabelzweigs,
+    \item keine Übertragungskapazität bei Ausfall beider Kabelzweige oder
+          einer Komponente im gemeinsamen Serienpfad.
+\end{itemize}
 
 \subsection{Berechnungsmethode}
-Beschreibung der Zustandsenumeration:
+
+Zur Bestimmung der Systemzuverlässigkeit wird eine vollständige
+Zustandsenumeration durchgeführt. Dabei werden alle möglichen
+Kombinationen der Zustände der einzelnen Komponenten systematisch
+gebildet und ausgewertet.
+
+Jede Komponente kann dabei einen der in Abschnitt 3.2 definierten Zustände
+(\texttt{up}, \texttt{failed}, \texttt{maintenance}) annehmen. Ein
+Systemzustand ergibt sich als Kombination der Zustände aller Komponenten.
+
+Unter der Annahme statistischer Unabhängigkeit der Komponenten ergibt sich
+die Wahrscheinlichkeit eines Systemzustands als Produkt der
+Einzelwahrscheinlichkeiten:
+
 \begin{equation}
 P(\text{Zustand}) = \prod_i P_i
 \end{equation}
 
-Auswertung jedes Zustands hinsichtlich verfügbarer Kapazität.
+Für jeden generierten Zustand wird anschließend anhand der jeweiligen
+Topologie überprüft, ob und in welchem Umfang die Übertragungskapazität
+zur Verfügung steht. Dazu wird der Zustand jeder Komponente in die
+Topologiefunktion überführt, welche die resultierende verfügbare
+Übertragungskapazität bestimmt.
+
+Die Wahrscheinlichkeiten aller Zustände mit identischer
+Übertragungskapazität werden anschließend aufsummiert, wodurch sich die
+Wahrscheinlichkeitsverteilung der verfügbaren Übertragungskapazität ergibt.
+
+Die Nicht-Verfügbarkeit der Übertragungsstrecke entspricht dabei der
+Wahrscheinlichkeit aller Zustände, in denen keine Übertragung möglich ist:
+
+\begin{equation}
+NV_{\text{System}} = P(\text{Kapazität} = 0)
+\end{equation}
+
+Zusätzlich werden unzulässige Zustände, wie beispielsweise eine
+gleichzeitige Wartung beider Kabelsysteme, aus der Analyse ausgeschlossen.
+Dadurch wird sichergestellt, dass nur realistische Betriebsszenarien in
+die Berechnung einfließen.
 
 \subsection{Wirtschaftliche Bewertung}
-\begin{itemize}
-    \item Annuitätenberechnung der Investitionskosten
-    \item Kosten nicht gelieferter Energie
-    \item Berücksichtigung des Erzeugungsprofils
-\end{itemize}
+
+Neben der technischen Zuverlässigkeit wird auch eine wirtschaftliche
+Bewertung der betrachteten Topologien durchgeführt. Ziel ist es, die
+jährlichen Gesamtkosten der beiden Varianten gegenüberzustellen und eine
+fundierte Entscheidungsgrundlage zu schaffen.
+
+\paragraph{Annuitätenberechnung der Investitionskosten}
+
+Die zusätzlichen Investitionskosten für die Errichtung der
+Schaltanlagen in Topologie 2 werden in Form von jährlichen Annuitäten
+berücksichtigt. Hierzu werden die einmaligen Investitionskosten über die
+Lebensdauer der Anlage gleichmäßig auf Jahreskosten umgelegt. Die
+Annuität ergibt sich aus:
+
+\begin{equation}
+A = I \cdot \frac{i(1+i)^n}{(1+i)^n - 1}
+\end{equation}
+
+wobei $I$ die Investitionskosten, $i$ der Zinssatz und $n$ die
+Nutzungsdauer in Jahren ist.
+
+\paragraph{Kosten nicht gelieferter Energie}
+
+Die Kosten infolge von Nicht-Verfügbarkeit ergeben sich aus der nicht
+übertragbaren elektrischen Energie. Diese wird durch die Kombination aus
+Nicht-Verfügbarkeit, installierter Leistung und einem spezifischen
+Kostenansatz pro nicht gelieferter Energieeinheit bestimmt. Die jährlichen
+Kosten können allgemein als Erwartungswert formuliert werden:
+
+\begin{equation}
+C_{\text{ENS}} = \sum_k P_k \cdot E_k \cdot c_{\text{ENS}}
+\end{equation}
+
+Dabei bezeichnet $P_k$ die Wahrscheinlichkeit eines Zustands mit
+eingeschränkter oder fehlender Übertragungskapazität, $E_k$ die dadurch
+nicht übertragbare Energie und $c_{\text{ENS}}$ die spezifischen Kosten
+pro Energieeinheit.
+
+\paragraph{Berücksichtigung des Erzeugungsprofils}
+
+Zur realistischen Abschätzung der nicht gelieferten Energie wird ein
+zeitlich variierendes Erzeugungsprofil berücksichtigt. Dieses beschreibt
+die tatsächlich zur Verfügung stehende Einspeiseleistung über das Jahr.
+Die nicht übertragbare Energie ergibt sich somit aus der Differenz
+zwischen verfügbarer Erzeugung und tatsächlich übertragbarer Leistung in
+den jeweiligen Systemzuständen.
+
+\paragraph{Gesamtbewertung}
+
+Die wirtschaftliche Bewertung erfolgt durch die Gegenüberstellung der
+jährlichen Gesamtkosten, bestehend aus Investitionskosten und Kosten der
+Nicht-Verfügbarkeit:
+
+\begin{equation}
+C_{\text{gesamt}} = A + C_{\text{ENS}}
+\end{equation}
+
+Auf Basis dieser Größe wird abschließend beurteilt, welche der beiden
+Topologien unter wirtschaftlichen Gesichtspunkten vorzuziehen ist.
 
 \section{Ergebnisse}
 

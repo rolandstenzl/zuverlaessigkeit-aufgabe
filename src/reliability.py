@@ -43,7 +43,7 @@ def get_component_state_probabilities(component: Component) -> Dict[str, float]:
         - maintenance
 
     Annahme:
-    NV_total = NV_failure + NV_maintenance
+    NV_total = NV_failure + NV_maintenance - NV_failure * NV_maintenance
     """
     p_failed = component.nv_failure
     p_maintenance = component.nv_maintenance
