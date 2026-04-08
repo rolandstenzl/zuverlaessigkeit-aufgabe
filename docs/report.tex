@@ -1,4 +1,5 @@
 \documentclass[a4paper,12pt]{article}
+\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage{amsmath,amssymb}
@@ -78,6 +79,7 @@
 \newcommand{\hantel}{\mathrel{\circ\!\!-\!\!\bullet}}     % links leer, rechts gefüllt
 \newcommand{\hantelrev}{\mathrel{\bullet\!\!-\!\!\circ}}  % links gefüllt, rechts leer
 
+
 \begin{document}
 
 \begin{titlepage}
@@ -112,53 +114,40 @@
 \clearpage
 
 \section{Einleitung}
-Die Zuverlässigkeit elektrischer Energiesysteme stellt ein zentrales Kriterium
-für die sichere und wirtschaftliche Versorgung von Verbrauchern dar.
-Insbesondere in Übertragungsnetzen kann der Ausfall einzelner Betriebsmittel
-erhebliche Auswirkungen auf die verfügbare Übertragungskapazität und damit auf
-die Versorgungssicherheit haben. Vor diesem Hintergrund ist es notwendig,
-unterschiedliche Systemtopologien hinsichtlich ihrer technischen
-Zuverlässigkeit sowie ihrer wirtschaftlichen Auswirkungen zu bewerten.
 
-In dieser Arbeit werden zwei Varianten einer Kabelübergabestation (KÜS)
-analysiert, die sich insbesondere in ihrer Redundanz und Schaltanlagenstruktur
-unterscheiden. Ziel ist es, die Nicht-Verfügbarkeit der Übertragungsstrecke
-sowie die Wahrscheinlichkeitsverteilung der verfügbaren Übertragungskapazität
-für beide Topologien zu bestimmen. Aufbauend darauf erfolgt eine
-wirtschaftliche Bewertung, bei der die zusätzlichen Investitionskosten für
-Schaltanlagen den Kosten gegenübergestellt werden, die durch nicht übertragbare
-Energie entstehen.
+Die Zuverlässigkeit elektrischer Energiesysteme ist ein zentrales
+Kriterium für eine sichere und wirtschaftliche Energieversorgung. Der
+Ausfall einzelner Betriebsmittel kann insbesondere in
+Übertragungsnetzen erhebliche Auswirkungen auf die verfügbare
+Übertragungskapazität haben.
 
-Die Analyse erfolgt auf Basis eines probabilistischen Modells, bei dem die
-Zustände einzelner Komponenten sowie deren Kombinationen systematisch
-ausgewertet werden. Auf Grundlage der gewonnenen Ergebnisse wird abschließend
-eine fundierte Entscheidung hinsichtlich der bevorzugten Topologie getroffen.
+In dieser Arbeit werden zwei Varianten einer Kabelübergabestation
+hinsichtlich ihrer Zuverlässigkeit und Wirtschaftlichkeit untersucht.
+Dabei werden sowohl die Nicht-Verfügbarkeit als auch die
+Kapazitätsverteilung der Übertragungsstrecke bestimmt und den Kosten
+nicht gelieferter Energie gegenübergestellt.
+
+Die Analyse basiert auf einem probabilistischen Modell mit
+Zustandsenumeration. Auf Grundlage der Ergebnisse wird abschließend
+eine Entscheidung über die bevorzugte Topologie getroffen.
 
 \section{Aufgabenstellung} 
 
-Ziel dieser Arbeit ist die vergleichende Analyse
-zweier unterschiedlicher Topologien einer Kabelübergabestation (KÜS)
-hinsichtlich ihrer Zuverlässigkeit und Wirtschaftlichkeit. Beide Systeme
-unterscheiden sich insbesondere in der Ausführung der Schaltanlagen sowie in
-der Möglichkeit, Teilsysteme im Fehlerfall weiter zu betreiben.
+Die Zuverlässigkeit elektrischer Energiesysteme ist ein zentrales
+Kriterium für eine sichere und wirtschaftliche Energieversorgung. Der
+Ausfall einzelner Betriebsmittel kann insbesondere in
+Übertragungsnetzen erhebliche Auswirkungen auf die verfügbare
+Übertragungskapazität haben.
 
-Für beide Topologien sind auf Basis gegebener Zuverlässigkeitskenngrößen die
-Nicht-Verfügbarkeit der Übertragungsstrecke sowie die Wahrscheinlichkeiten der
-verfügbaren Übertragungskapazität zu bestimmen. Dabei wird insbesondere
-untersucht, mit welcher Wahrscheinlichkeit die volle, reduzierte oder keine
-Übertragungskapazität zur Verfügung steht.
+In dieser Arbeit werden zwei Varianten einer Kabelübergabestation
+hinsichtlich ihrer Zuverlässigkeit und Wirtschaftlichkeit untersucht.
+Dabei werden sowohl die Nicht-Verfügbarkeit als auch die
+Kapazitätsverteilung der Übertragungsstrecke bestimmt und den Kosten
+nicht gelieferter Energie gegenübergestellt.
 
-Aufbauend auf diesen Ergebnissen erfolgt eine wirtschaftliche Bewertung der
-beiden Systeme. Hierbei werden die jährlichen Zusatzkosten für die Errichtung
-der Schaltanlagen der KÜS den Kosten gegenübergestellt, die durch nicht
-übertragbare elektrische Energie entstehen. Grundlage hierfür bildet ein
-vorgegebenes Erzeugungsprofil sowie spezifische Kosten pro nicht gelieferter
-Energieeinheit.
-
-Abschließend ist auf Basis der technischen und wirtschaftlichen Ergebnisse eine
-begründete Entscheidung zu treffen, welche der beiden Topologien vorzuziehen
-ist. Zusätzlich wird untersucht, wie sich die Entscheidung verändert, wenn die
-Kosten für Kapazitätseinschränkungen vernachlässigt werden. 
+Die Analyse basiert auf einem probabilistischen Modell mit
+Zustandsenumeration. Auf Grundlage der Ergebnisse wird abschließend
+eine Entscheidung über die bevorzugte Topologie getroffen.
 
 \section{Methodik}
 
@@ -175,13 +164,10 @@ Ausfalldauer beschrieben, woraus sich die Nicht-Verfügbarkeit ableiten lässt.
 \paragraph{Freileitung}
 Freileitungen stellen die Verbindung zwischen der Kabelübergabestation und dem
 übergeordneten Netz dar. Sie werden als längenabhängige Komponenten modelliert,
-deren Ausfallrate proportional zur Leitungslänge ist. Aufgrund ihrer
-exponierten Lage weisen sie im Vergleich zu Kabelsystemen in der Regel höhere
-Ausfallraten auf.
+deren Ausfallrate proportional zur Leitungslänge ist.
 
 \paragraph{Kabel}
-Die Kabel bilden den zentralen Bestandteil der Übertragungsstrecke innerhalb
-der Kabelübergabestation. Analog zu den Freileitungen werden sie als
+Die Kabel werden analog zu den Freileitungen als
 längenabhängige Komponenten modelliert. Zusätzlich wird bei Kabeln auch die
 geplante Wartung berücksichtigt, wodurch neben Ausfallzuständen auch
 Wartungszustände in die Analyse eingehen.
@@ -256,19 +242,6 @@ Dabei entspricht $8760$ der Anzahl der Stunden eines Jahres. Die
 Nicht-Verfügbarkeit beschreibt den Anteil der Zeit, in der eine Komponente im
 Mittel nicht zur Verfügung steht.
 
-\paragraph{Längenabhängige Modellierung}
-
-Für Freileitungen und Kabel wird angenommen, dass die Ausfallrate proportional
-zur Leitungslänge ist. Die gesamte Ausfallrate ergibt sich somit aus der
-spezifischen Ausfallrate pro Kilometer und der jeweiligen Leitungslänge:
-
-\begin{equation}
-H_{\text{gesamt}} = H_{\text{pro km}} \cdot L
-\end{equation}
-
-Dadurch wird berücksichtigt, dass längere Leitungen eine höhere
-Ausfallwahrscheinlichkeit aufweisen.
-
 \paragraph{Berücksichtigung von Wartung}
 
 Für Kabelsysteme wird zusätzlich zur zufälligen Ausfallwahrscheinlichkeit auch
@@ -311,13 +284,15 @@ definierten Zuverlässigkeitskenngrößen abgeleitet. Dabei ergibt sich für jed
 Komponente:
 
 \begin{equation}
-P(\text{up}) = 1 - P(\text{failed}) - P(\text{maintenance})
+    P_\text{up} = 1 - P_\text{failed} - P_\text{maintenance} + (P_\text{failed}
+    \cdot P_\text{maintenance})
 \end{equation}
 
 Die Wahrscheinlichkeit eines Ausfallzustands entspricht dabei der
 Nicht-Verfügbarkeit infolge zufälliger Ausfälle, während die
 Wartungswahrscheinlichkeit aus den geplanten Wartungsintervallen und -dauern
-bestimmt wird.
+bestimmt wird. Weiters wird angenommen, dass keine Ausfälle während der Wartung
+geschehen.
 
 Für die Analyse des Gesamtsystems wird angenommen, dass die Zustände der
 einzelnen Komponenten statistisch unabhängig sind. Dadurch kann die
@@ -648,14 +623,6 @@ Bei Systemen mit hoher Grundzuverlässigkeit hingegen überwiegen die
 Investitionskosten, wodurch einfachere Strukturen wirtschaftlich
 vorteilhafter sind.
 
-\paragraph{Zusammenfassung}
-
-Die Wahl der optimalen Topologie hängt maßgeblich vom Verhältnis zwischen
-Investitionskosten und Kosten der Nicht-Verfügbarkeit ab. Während
-Topologie 2 insbesondere bei weniger zuverlässigen Komponenten klare
-wirtschaftliche Vorteile bietet, ist bei sehr zuverlässigen Systemen
-Topologie 1 die kostengünstigere Lösung.
-
 \section{Fazit und Entscheidung}
 
 Ziel dieser Arbeit war die vergleichende Analyse zweier Topologien einer
@@ -676,7 +643,8 @@ Systemausfall resultiert, sondern lediglich zu einer reduzierten
 Im Gegensatz dazu weist Topologie 1 aufgrund ihrer rein seriellen
 Struktur eine höhere Anfälligkeit gegenüber einzelnen
 Komponentenausfällen auf, wodurch bereits geringe Störungen zu einem
-vollständigen Ausfall der Übertragungsstrecke führen.
+vollständigen Ausfall der 
+Übertragungsstrecke führen.
 
 \paragraph{Wirtschaftliche Entscheidung}
 
@@ -713,6 +681,5 @@ wirtschaftlichen Rahmenbedingungen getroffen werden.
 Insgesamt kann festgehalten werden, dass Topologie 2 aus technischer
 Sicht überlegen ist, während die wirtschaftliche Vorteilhaftigkeit vom
 jeweiligen Anwendungsfall abhängt.
-
 
 \end{document}
