@@ -43,7 +43,7 @@ latexmkrc
 
 # PDFs (optional!)
 # Wenn du PDFs NICHT committen willst:
-*.pdf
+# *.pdf
 
 # Editor/temporary files
 *~
