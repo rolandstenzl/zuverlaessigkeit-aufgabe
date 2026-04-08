@@ -8,28 +8,28 @@ Analyseergebnis Topologie 1
 ==========================================================================================
 
 Wahrscheinlichkeit je Kapazitätsstufe:
-  Kapazität  1.0 : 0.99424888
-  Kapazität  0.0 : 0.00574361
+  Kapazität  1.0 : 0.99424957
+  Kapazität  0.0 : 0.00574362
 
 ------------------------------------------------------------------------------------------
 Zusammenfassung:
-  P(100% Kapazität) : 0.99424888
+  P(100% Kapazität) : 0.99424957
   P( 50% Kapazität) : 0.00000000
-  P(  0% Kapazität) : 0.00574361
+  P(  0% Kapazität) : 0.00574362
 
 ------------------------------------------------------------------------------------------
-Nicht-Verfügbarkeit der Übertragungsstrecke: 0.00574361
-Verfügbarkeit der Übertragungsstrecke:     0.99425639
+Nicht-Verfügbarkeit der Übertragungsstrecke: 0.00574362
+Verfügbarkeit der Übertragungsstrecke:     0.99425638
 
 ------------------------------------------------------------------------------------------
-Summe der Zustandswahrscheinlichkeiten:     0.99999249
+Summe der Zustandswahrscheinlichkeiten:     0.99999318
 ⚠️ WARNUNG: Wahrscheinlichkeiten summieren sich nicht zu 1!
 ==========================================================================================
 
 ==========================================================================================
 Erste 10 Zustände Topologie 1
 ==========================================================================================
- 1. FL links=up, SS links=up, K1=up, K2=up, SS rechts=up, FL rechts=up | P=0.99424888 | Kapazität=1.0 | Alle Komponenten in Betrieb
+ 1. FL links=up, SS links=up, K1=up, K2=up, SS rechts=up, FL rechts=up | P=0.99424957 | Kapazität=1.0 | Alle Komponenten in Betrieb
  2. FL links=up, SS links=up, K1=up, K2=up, SS rechts=failed, FL rechts=up | P=0.00000021 | Kapazität=0.0 | Mindestens eine Komponente nicht verfügbar
  3. FL links=up, SS links=failed, K1=up, K2=up, SS rechts=up, FL rechts=up | P=0.00000021 | Kapazität=0.0 | Mindestens eine Komponente nicht verfügbar
  4. FL links=up, SS links=failed, K1=up, K2=up, SS rechts=failed, FL rechts=up | P=0.00000000 | Kapazität=0.0 | Mindestens eine Komponente nicht verfügbar
@@ -49,13 +49,13 @@ Analyseergebnis Topologie 2
 ==========================================================================================
 
 Wahrscheinlichkeit je Kapazitätsstufe:
-  Kapazität  1.0 : 0.99424760
+  Kapazität  1.0 : 0.99424829
   Kapazität  0.5 : 0.00571553
   Kapazität  0.0 : 0.00002936
 
 ------------------------------------------------------------------------------------------
 Zusammenfassung:
-  P(100% Kapazität) : 0.99424760
+  P(100% Kapazität) : 0.99424829
   P( 50% Kapazität) : 0.00571553
   P(  0% Kapazität) : 0.00002936
 
@@ -64,14 +64,14 @@ Nicht-Verfügbarkeit der Übertragungsstrecke: 0.00002936
 Verfügbarkeit der Übertragungsstrecke:     0.99997064
 
 ------------------------------------------------------------------------------------------
-Summe der Zustandswahrscheinlichkeiten:     0.99999249
+Summe der Zustandswahrscheinlichkeiten:     0.99999318
 ⚠️ WARNUNG: Wahrscheinlichkeiten summieren sich nicht zu 1!
 ==========================================================================================
 
 ========================================================================================================================
 Erste 10 Zustände Topologie 2
 ========================================================================================================================
- 1. FL links=up, SF links=up, SS links=up, K1-SF links=up, K1=up, K1-SF rechts=up, K2-SF links=up, K2=up, K2-SF rechts=up, SS rechts=up, SF rechts=up, FL rechts=up | P=0.99424760 | Kapazität=1.0 | Beide Kabelzweige verfügbar
+ 1. FL links=up, SF links=up, SS links=up, K1-SF links=up, K1=up, K1-SF rechts=up, K2-SF links=up, K2=up, K2-SF rechts=up, SS rechts=up, SF rechts=up, FL rechts=up | P=0.99424829 | Kapazität=1.0 | Beide Kabelzweige verfügbar
  2. FL links=up, SF links=up, SS links=up, K1-SF links=up, K1=up, K1-SF rechts=up, K2-SF links=up, K2=up, K2-SF rechts=failed, SS rechts=up, SF rechts=up, FL rechts=up | P=0.00000021 | Kapazität=0.5 | Ein Kabelzweig verfügbar
  3. FL links=up, SF links=up, SS links=up, K1-SF links=up, K1=up, K1-SF rechts=up, K2-SF links=failed, K2=up, K2-SF rechts=up, SS rechts=up, SF rechts=up, FL rechts=up | P=0.00000021 | Kapazität=0.5 | Ein Kabelzweig verfügbar
  4. FL links=up, SF links=up, SS links=up, K1-SF links=up, K1=up, K1-SF rechts=up, K2-SF links=failed, K2=up, K2-SF rechts=failed, SS rechts=up, SF rechts=up, FL rechts=up | P=0.00000000 | Kapazität=0.5 | Ein Kabelzweig verfügbar
@@ -91,12 +91,12 @@ Analyseergebnis Topologie 1
 ==========================================================================================
 
 Wahrscheinlichkeit je Kapazitätsstufe:
-  Kapazität  1.0 : 0.99765549
+  Kapazität  1.0 : 0.99765563
   Kapazität  0.0 : 0.00234331
 
 ------------------------------------------------------------------------------------------
 Zusammenfassung:
-  P(100% Kapazität) : 0.99765549
+  P(100% Kapazität) : 0.99765563
   P( 50% Kapazität) : 0.00000000
   P(  0% Kapazität) : 0.00234331
 
@@ -105,14 +105,14 @@ Nicht-Verfügbarkeit der Übertragungsstrecke: 0.00234331
 Verfügbarkeit der Übertragungsstrecke:     0.99765669
 
 ------------------------------------------------------------------------------------------
-Summe der Zustandswahrscheinlichkeiten:     0.99999880
+Summe der Zustandswahrscheinlichkeiten:     0.99999894
 ⚠️ WARNUNG: Wahrscheinlichkeiten summieren sich nicht zu 1!
 ==========================================================================================
 
 ==========================================================================================
 Erste 10 Zustände Topologie 1
 ==========================================================================================
- 1. FL links=up, SS links=up, K1=up, K2=up, SS rechts=up, FL rechts=up | P=0.99765549 | Kapazität=1.0 | Alle Komponenten in Betrieb
+ 1. FL links=up, SS links=up, K1=up, K2=up, SS rechts=up, FL rechts=up | P=0.99765563 | Kapazität=1.0 | Alle Komponenten in Betrieb
  2. FL links=up, SS links=up, K1=up, K2=up, SS rechts=failed, FL rechts=up | P=0.00000021 | Kapazität=0.0 | Mindestens eine Komponente nicht verfügbar
  3. FL links=up, SS links=failed, K1=up, K2=up, SS rechts=up, FL rechts=up | P=0.00000021 | Kapazität=0.0 | Mindestens eine Komponente nicht verfügbar
  4. FL links=up, SS links=failed, K1=up, K2=up, SS rechts=failed, FL rechts=up | P=0.00000000 | Kapazität=0.0 | Mindestens eine Komponente nicht verfügbar
@@ -132,13 +132,13 @@ Analyseergebnis Topologie 2
 ==========================================================================================
 
 Wahrscheinlichkeit je Kapazitätsstufe:
-  Kapazität  1.0 : 0.99765421
+  Kapazität  1.0 : 0.99765435
   Kapazität  0.5 : 0.00231579
   Kapazität  0.0 : 0.00002880
 
 ------------------------------------------------------------------------------------------
 Zusammenfassung:
-  P(100% Kapazität) : 0.99765421
+  P(100% Kapazität) : 0.99765435
   P( 50% Kapazität) : 0.00231579
   P(  0% Kapazität) : 0.00002880
 
@@ -147,14 +147,14 @@ Nicht-Verfügbarkeit der Übertragungsstrecke: 0.00002880
 Verfügbarkeit der Übertragungsstrecke:     0.99997120
 
 ------------------------------------------------------------------------------------------
-Summe der Zustandswahrscheinlichkeiten:     0.99999880
+Summe der Zustandswahrscheinlichkeiten:     0.99999894
 ⚠️ WARNUNG: Wahrscheinlichkeiten summieren sich nicht zu 1!
 ==========================================================================================
 
 ========================================================================================================================
 Erste 10 Zustände Topologie 2
 ========================================================================================================================
- 1. FL links=up, SF links=up, SS links=up, K1-SF links=up, K1=up, K1-SF rechts=up, K2-SF links=up, K2=up, K2-SF rechts=up, SS rechts=up, SF rechts=up, FL rechts=up | P=0.99765421 | Kapazität=1.0 | Beide Kabelzweige verfügbar
+ 1. FL links=up, SF links=up, SS links=up, K1-SF links=up, K1=up, K1-SF rechts=up, K2-SF links=up, K2=up, K2-SF rechts=up, SS rechts=up, SF rechts=up, FL rechts=up | P=0.99765435 | Kapazität=1.0 | Beide Kabelzweige verfügbar
  2. FL links=up, SF links=up, SS links=up, K1-SF links=up, K1=up, K1-SF rechts=up, K2-SF links=up, K2=up, K2-SF rechts=failed, SS rechts=up, SF rechts=up, FL rechts=up | P=0.00000021 | Kapazität=0.5 | Ein Kabelzweig verfügbar
  3. FL links=up, SF links=up, SS links=up, K1-SF links=up, K1=up, K1-SF rechts=up, K2-SF links=failed, K2=up, K2-SF rechts=up, SS rechts=up, SF rechts=up, FL rechts=up | P=0.00000021 | Kapazität=0.5 | Ein Kabelzweig verfügbar
  4. FL links=up, SF links=up, SS links=up, K1-SF links=up, K1=up, K1-SF rechts=up, K2-SF links=failed, K2=up, K2-SF rechts=failed, SS rechts=up, SF rechts=up, FL rechts=up | P=0.00000000 | Kapazität=0.5 | Ein Kabelzweig verfügbar
@@ -174,28 +174,28 @@ Analyseergebnis Topologie 1
 ==========================================================================================
 
 Wahrscheinlichkeit je Kapazitätsstufe:
-  Kapazität  1.0 : 0.98607037
-  Kapazität  0.0 : 0.01388271
+  Kapazität  1.0 : 0.98607209
+  Kapazität  0.0 : 0.01388273
 
 ------------------------------------------------------------------------------------------
 Zusammenfassung:
-  P(100% Kapazität) : 0.98607037
+  P(100% Kapazität) : 0.98607209
   P( 50% Kapazität) : 0.00000000
-  P(  0% Kapazität) : 0.01388271
+  P(  0% Kapazität) : 0.01388273
 
 ------------------------------------------------------------------------------------------
-Nicht-Verfügbarkeit der Übertragungsstrecke: 0.01388271
-Verfügbarkeit der Übertragungsstrecke:     0.98611729
+Nicht-Verfügbarkeit der Übertragungsstrecke: 0.01388273
+Verfügbarkeit der Übertragungsstrecke:     0.98611727
 
 ------------------------------------------------------------------------------------------
-Summe der Zustandswahrscheinlichkeiten:     0.99995309
+Summe der Zustandswahrscheinlichkeiten:     0.99995481
 ⚠️ WARNUNG: Wahrscheinlichkeiten summieren sich nicht zu 1!
 ==========================================================================================
 
 ==========================================================================================
 Erste 10 Zustände Topologie 1
 ==========================================================================================
- 1. FL links=up, SS links=up, K1=up, K2=up, SS rechts=up, FL rechts=up | P=0.98607037 | Kapazität=1.0 | Alle Komponenten in Betrieb
+ 1. FL links=up, SS links=up, K1=up, K2=up, SS rechts=up, FL rechts=up | P=0.98607209 | Kapazität=1.0 | Alle Komponenten in Betrieb
  2. FL links=up, SS links=up, K1=up, K2=up, SS rechts=failed, FL rechts=up | P=0.00000021 | Kapazität=0.0 | Mindestens eine Komponente nicht verfügbar
  3. FL links=up, SS links=failed, K1=up, K2=up, SS rechts=up, FL rechts=up | P=0.00000021 | Kapazität=0.0 | Mindestens eine Komponente nicht verfügbar
  4. FL links=up, SS links=failed, K1=up, K2=up, SS rechts=failed, FL rechts=up | P=0.00000000 | Kapazität=0.0 | Mindestens eine Komponente nicht verfügbar
@@ -215,14 +215,14 @@ Analyseergebnis Topologie 2
 ==========================================================================================
 
 Wahrscheinlichkeit je Kapazitätsstufe:
-  Kapazität  1.0 : 0.98606911
-  Kapazität  0.5 : 0.01385358
+  Kapazität  1.0 : 0.98607082
+  Kapazität  0.5 : 0.01385359
   Kapazität  0.0 : 0.00003040
 
 ------------------------------------------------------------------------------------------
 Zusammenfassung:
-  P(100% Kapazität) : 0.98606911
-  P( 50% Kapazität) : 0.01385358
+  P(100% Kapazität) : 0.98607082
+  P( 50% Kapazität) : 0.01385359
   P(  0% Kapazität) : 0.00003040
 
 ------------------------------------------------------------------------------------------
@@ -230,14 +230,14 @@ Nicht-Verfügbarkeit der Übertragungsstrecke: 0.00003040
 Verfügbarkeit der Übertragungsstrecke:     0.99996960
 
 ------------------------------------------------------------------------------------------
-Summe der Zustandswahrscheinlichkeiten:     0.99995309
+Summe der Zustandswahrscheinlichkeiten:     0.99995481
 ⚠️ WARNUNG: Wahrscheinlichkeiten summieren sich nicht zu 1!
 ==========================================================================================
 
 ========================================================================================================================
 Erste 10 Zustände Topologie 2
 ========================================================================================================================
- 1. FL links=up, SF links=up, SS links=up, K1-SF links=up, K1=up, K1-SF rechts=up, K2-SF links=up, K2=up, K2-SF rechts=up, SS rechts=up, SF rechts=up, FL rechts=up | P=0.98606911 | Kapazität=1.0 | Beide Kabelzweige verfügbar
+ 1. FL links=up, SF links=up, SS links=up, K1-SF links=up, K1=up, K1-SF rechts=up, K2-SF links=up, K2=up, K2-SF rechts=up, SS rechts=up, SF rechts=up, FL rechts=up | P=0.98607082 | Kapazität=1.0 | Beide Kabelzweige verfügbar
  2. FL links=up, SF links=up, SS links=up, K1-SF links=up, K1=up, K1-SF rechts=up, K2-SF links=up, K2=up, K2-SF rechts=failed, SS rechts=up, SF rechts=up, FL rechts=up | P=0.00000021 | Kapazität=0.5 | Ein Kabelzweig verfügbar
  3. FL links=up, SF links=up, SS links=up, K1-SF links=up, K1=up, K1-SF rechts=up, K2-SF links=failed, K2=up, K2-SF rechts=up, SS rechts=up, SF rechts=up, FL rechts=up | P=0.00000021 | Kapazität=0.5 | Ein Kabelzweig verfügbar
  4. FL links=up, SF links=up, SS links=up, K1-SF links=up, K1=up, K1-SF rechts=up, K2-SF links=failed, K2=up, K2-SF rechts=failed, SS rechts=up, SF rechts=up, FL rechts=up | P=0.00000000 | Kapazität=0.5 | Ein Kabelzweig verfügbar

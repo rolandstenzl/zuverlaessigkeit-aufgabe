@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from itertools import product
-from typing import Dict, List, Tuple
+from typing import Dict, List
 
 from src.components import Component
 from src.topology import TopologyResult, evaluate_topology_1
@@ -47,7 +47,8 @@ def get_component_state_probabilities(component: Component) -> Dict[str, float]:
     """
     p_failed = component.nv_failure
     p_maintenance = component.nv_maintenance
-    p_up = 1.0 - p_failed - p_maintenance
+    # p_down = component.nv_total
+    p_up = component.availability
 
     # kleine numerische Sicherung
     if p_up < 0:
