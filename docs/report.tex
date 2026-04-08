@@ -526,16 +526,18 @@ betrachteten Datensätze ist in Tabelle \ref{tab:topo1_nv} dargestellt.
 \centering
 \begin{tabular}{lcc}
 \hline
-Datensatz & Nicht-Verfügbarkeit & Verfügbarkeit \\
+Datensatz & $P_\text{up}$ & $P_\text{down}$ \\
 \hline
-Datensatz 1 & 0.00574361 & 0.99425639 \\
-Datensatz 2 & 0.00234331 & 0.99765669 \\
-Datensatz 3 & 0.01388271 & 0.98611729 \\
+Datensatz 1 & \qty{99.424888}{\percent} & \qty{0.574362}{\percent} \\
+Datensatz 2 & \qty{99.765563}{\percent} & \qty{0.234331}{\percent} \\
+Datensatz 3 & \qty{98.607209}{\percent} & \qty{1.388273}{\percent}\\
 \hline
 \end{tabular}
-\caption{Nicht-Verfügbarkeit der Übertragungsstrecke für Topologie 1}
+\caption{Verfügbarkeiten für Topologie 1}
 \label{tab:topo1_nv}
 \end{table}
+
+\paragraph{Interpretation}
 
 Es zeigt sich, dass die Nicht-Verfügbarkeit stark von den zugrunde
 liegenden Zuverlässigkeitsparametern abhängt. Während Datensatz 2 die
@@ -543,76 +545,12 @@ geringste Nicht-Verfügbarkeit aufweist, führt Datensatz 3 aufgrund
 höherer Ausfall- und Wartungsanteile zu einer deutlich reduzierten
 Systemverfügbarkeit.
 
-\paragraph{Kapazitätsverteilung}
-
-Die Wahrscheinlichkeitsverteilung der verfügbaren Übertragungskapazität
-ist in Tabelle \ref{tab:topo1_capacity} dargestellt.
-
-\begin{table}[h]
-\centering
-\begin{tabular}{lcc}
-\hline
-Datensatz & $P(100\%)$ & $P(0\%)$ \\
-\hline
-Datensatz 1 & 0.99424888 & 0.00574361 \\
-Datensatz 2 & 0.99765549 & 0.00234331 \\
-Datensatz 3 & 0.98607037 & 0.01388271 \\
-\hline
-\end{tabular}
-\caption{Kapazitätsverteilung für Topologie 1}
-\label{tab:topo1_capacity}
-\end{table}
-
-Aufgrund der fehlenden Entkopplungsmöglichkeiten existieren keine
-Zustände mit reduzierter Übertragungskapazität. Bereits der Ausfall einer
-einzelnen Komponente führt zum vollständigen Ausfall der
-Übertragungsstrecke.
-
-\paragraph{Interpretation}
-
-Die Ergebnisse verdeutlichen, dass Topologie 1 aufgrund ihrer rein
-seriellen Struktur eine hohe Anfälligkeit gegenüber einzelnen
-Komponentenausfällen aufweist. Insbesondere Wartungsmaßnahmen an den
-Kabelsystemen führen unmittelbar zu einer vollständigen Unterbrechung der
-Übertragung.
-
-Die Wahrscheinlichkeitsverteilung ist somit stark dichotom geprägt, mit
-hoher Wahrscheinlichkeit vollständiger Verfügbarkeit und gleichzeitig
-nicht vernachlässigbarer Wahrscheinlichkeit eines Totalausfalls. Eine
-partielle Aufrechterhaltung der Übertragung ist in dieser Topologie nicht
-möglich.
-
 \subsection{Topologie 2}
 
 Durch die parallele Ausführung der
 Kabelsysteme sowie den Einsatz von Schaltfeldern in Topologie 2 ergeben sich im
 Gegensatz zu Topologie 1 zusätzliche Betriebszustände mit reduzierter
 Übertragungskapazität.
-
-\paragraph{Nicht-Verfügbarkeit}
-
-Die berechnete Nicht-Verfügbarkeit der Übertragungsstrecke für die drei
-betrachteten Datensätze ist in Tabelle \ref{tab:topo2_nv} dargestellt.
-
-\begin{table}[h]
-\centering
-\begin{tabular}{lcc}
-\hline
-Datensatz & Nicht-Verfügbarkeit & Verfügbarkeit \\
-\hline
-Datensatz 1 & 0.00002936 & 0.99997064 \\
-Datensatz 2 & 0.00002880 & 0.99997120 \\
-Datensatz 3 & 0.00003040 & 0.99996960 \\
-\hline
-\end{tabular}
-\caption{Nicht-Verfügbarkeit der Übertragungsstrecke für Topologie 2}
-\label{tab:topo2_nv}
-\end{table}
-
-Im Vergleich zu Topologie 1 zeigt sich eine deutlich reduzierte
-Nicht-Verfügbarkeit. Der Ausfall der gesamten Übertragungsstrecke tritt
-nur dann ein, wenn beide Kabelzweige gleichzeitig nicht verfügbar sind
-oder eine Komponente im gemeinsamen Serienpfad ausfällt.
 
 \paragraph{Kapazitätsverteilung}
 
@@ -623,11 +561,11 @@ ist in Tabelle \ref{tab:topo2_capacity} dargestellt.
 \centering
 \begin{tabular}{lccc}
 \hline
-Datensatz & $P(100\%)$ & $P(50\%)$ & $P(0\%)$ \\
+Datensatz & $P_{\qty{100}{\percent}}$ & $P_{\qty{50}{\percent}}$ & $P_{\qty{0}{\percent}}$ \\
 \hline
-Datensatz 1 & 0.99424760 & 0.00571553 & 0.00002936 \\
-Datensatz 2 & 0.99765421 & 0.00231579 & 0.00002880 \\
-Datensatz 3 & 0.98606911 & 0.01385358 & 0.00003040 \\
+Datensatz 1 & \qty{99.424829}{\percent} & \qty{0.571553}{\percent} & \qty{0.002936}{\percent} \\
+Datensatz 2 & \qty{99.765435}{\percent}& \qty{0.231579}{\percent}& \qty{0.002880}{\percent}\\
+Datensatz 3 & \qty{98.607082}{\percent} & \qty{1.385359}{\percent} & \qty{0.003040}{\percent}\\
 \hline
 \end{tabular}
 \caption{Kapazitätsverteilung für Topologie 2}
@@ -653,11 +591,6 @@ wird. Gleichzeitig verschiebt sich ein Teil der Ausfallwahrscheinlichkeit
 in den Bereich reduzierter Kapazität, was zu einer insgesamt deutlich
 robusteren Systemstruktur führt.
 
-Die Ergebnisse verdeutlichen somit den wesentlichen Vorteil der
-Redundanz: Anstelle eines abrupten Übergangs zwischen vollständiger
-Verfügbarkeit und Totalausfall entsteht ein abgestuftes Verhalten mit
-erhöhter Betriebssicherheit.
-
 \subsection{Wirtschaftlicher Vergleich}
 
 In diesem Abschnitt werden die beiden Topologien auf Basis der jährlichen
@@ -674,7 +607,7 @@ Tabelle \ref{tab:economic_comparison} dargestellt.
 \centering
 \begin{tabular}{lccc}
 \hline
-Datensatz & Topologie 1 [EUR/a] & Topologie 2 [EUR/a] & Differenz (T2 - T1) [EUR/a] \\
+Datensatz & Top 1 [EUR/a] & Top 2 [EUR/a] & (T2 - T1) [EUR/a] \\
 \hline
 Datensatz 1 & 2{,}846{,}535.40 & 1{,}925{,}428.53 & -921{,}106.87 \\
 Datensatz 2 & 1{,}161{,}342.42 & 1{,}765{,}666.97 & +604{,}324.56 \\
