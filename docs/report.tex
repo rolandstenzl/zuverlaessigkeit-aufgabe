@@ -486,56 +486,278 @@ Topologien unter wirtschaftlichen Gesichtspunkten vorzuziehen ist.
 
 \section{Ergebnisse}
 
+Im Folgenden werden die Ergebnisse der Zuverlässigkeitsanalyse für die
+betrachteten Topologien dargestellt und miteinander verglichen.
+
 \subsection{Topologie 1}
-\begin{itemize}
-    \item Nicht-Verfügbarkeit
-    \item Kapazitätsverteilung
-\end{itemize}
+
+Aufgrund der rein seriellen Struktur von Topologie 1 stehen
+ausschließlich zwei Betriebszustände zur Verfügung: vollständige
+Übertragung oder vollständiger Ausfall.
+
+\paragraph{Nicht-Verfügbarkeit}
+
+Die berechnete Nicht-Verfügbarkeit der Übertragungsstrecke für die drei
+betrachteten Datensätze ist in Tabelle \ref{tab:topo1_nv} dargestellt.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\hline
+Datensatz & Nicht-Verfügbarkeit & Verfügbarkeit \\
+\hline
+Datensatz 1 & 0.00574361 & 0.99425639 \\
+Datensatz 2 & 0.00234331 & 0.99765669 \\
+Datensatz 3 & 0.01388271 & 0.98611729 \\
+\hline
+\end{tabular}
+\caption{Nicht-Verfügbarkeit der Übertragungsstrecke für Topologie 1}
+\label{tab:topo1_nv}
+\end{table}
+
+Es zeigt sich, dass die Nicht-Verfügbarkeit stark von den zugrunde
+liegenden Zuverlässigkeitsparametern abhängt. Während Datensatz 2 die
+geringste Nicht-Verfügbarkeit aufweist, führt Datensatz 3 aufgrund
+höherer Ausfall- und Wartungsanteile zu einer deutlich reduzierten
+Systemverfügbarkeit.
+
+\paragraph{Kapazitätsverteilung}
+
+Die Wahrscheinlichkeitsverteilung der verfügbaren Übertragungskapazität
+ist in Tabelle \ref{tab:topo1_capacity} dargestellt.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\hline
+Datensatz & $P(100\%)$ & $P(0\%)$ \\
+\hline
+Datensatz 1 & 0.99424888 & 0.00574361 \\
+Datensatz 2 & 0.99765549 & 0.00234331 \\
+Datensatz 3 & 0.98607037 & 0.01388271 \\
+\hline
+\end{tabular}
+\caption{Kapazitätsverteilung für Topologie 1}
+\label{tab:topo1_capacity}
+\end{table}
+
+Aufgrund der fehlenden Entkopplungsmöglichkeiten existieren keine
+Zustände mit reduzierter Übertragungskapazität. Bereits der Ausfall einer
+einzelnen Komponente führt zum vollständigen Ausfall der
+Übertragungsstrecke.
+
+\paragraph{Interpretation}
+
+Die Ergebnisse verdeutlichen, dass Topologie 1 aufgrund ihrer rein
+seriellen Struktur eine hohe Anfälligkeit gegenüber einzelnen
+Komponentenausfällen aufweist. Insbesondere Wartungsmaßnahmen an den
+Kabelsystemen führen unmittelbar zu einer vollständigen Unterbrechung der
+Übertragung.
+
+Die Wahrscheinlichkeitsverteilung ist somit stark dichotom geprägt, mit
+hoher Wahrscheinlichkeit vollständiger Verfügbarkeit und gleichzeitig
+nicht vernachlässigbarer Wahrscheinlichkeit eines Totalausfalls. Eine
+partielle Aufrechterhaltung der Übertragung ist in dieser Topologie nicht
+möglich.
 
 \subsection{Topologie 2}
-\begin{itemize}
-    \item Nicht-Verfügbarkeit
-    \item Kapazitätsverteilung
-\end{itemize}
+
+Durch die parallele Ausführung der
+Kabelsysteme sowie den Einsatz von Schaltfeldern in Topologie 2 ergeben sich im
+Gegensatz zu Topologie 1 zusätzliche Betriebszustände mit reduzierter
+Übertragungskapazität.
+
+\paragraph{Nicht-Verfügbarkeit}
+
+Die berechnete Nicht-Verfügbarkeit der Übertragungsstrecke für die drei
+betrachteten Datensätze ist in Tabelle \ref{tab:topo2_nv} dargestellt.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\hline
+Datensatz & Nicht-Verfügbarkeit & Verfügbarkeit \\
+\hline
+Datensatz 1 & 0.00002936 & 0.99997064 \\
+Datensatz 2 & 0.00002880 & 0.99997120 \\
+Datensatz 3 & 0.00003040 & 0.99996960 \\
+\hline
+\end{tabular}
+\caption{Nicht-Verfügbarkeit der Übertragungsstrecke für Topologie 2}
+\label{tab:topo2_nv}
+\end{table}
+
+Im Vergleich zu Topologie 1 zeigt sich eine deutlich reduzierte
+Nicht-Verfügbarkeit. Der Ausfall der gesamten Übertragungsstrecke tritt
+nur dann ein, wenn beide Kabelzweige gleichzeitig nicht verfügbar sind
+oder eine Komponente im gemeinsamen Serienpfad ausfällt.
+
+\paragraph{Kapazitätsverteilung}
+
+Die Wahrscheinlichkeitsverteilung der verfügbaren Übertragungskapazität
+ist in Tabelle \ref{tab:topo2_capacity} dargestellt.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lccc}
+\hline
+Datensatz & $P(100\%)$ & $P(50\%)$ & $P(0\%)$ \\
+\hline
+Datensatz 1 & 0.99424760 & 0.00571553 & 0.00002936 \\
+Datensatz 2 & 0.99765421 & 0.00231579 & 0.00002880 \\
+Datensatz 3 & 0.98606911 & 0.01385358 & 0.00003040 \\
+\hline
+\end{tabular}
+\caption{Kapazitätsverteilung für Topologie 2}
+\label{tab:topo2_capacity}
+\end{table}
+
+Im Gegensatz zu Topologie 1 treten hier Zustände mit reduzierter
+Übertragungskapazität auf. Diese entstehen, wenn einer der beiden
+Kabelzweige infolge eines Ausfalls oder einer Wartung nicht verfügbar
+ist, während der zweite Zweig weiterhin betrieben werden kann.
+
+\paragraph{Interpretation}
+
+Die Ergebnisse zeigen, dass durch die Einführung redundanter
+Kabelzweige eine signifikante Verbesserung der Systemverfügbarkeit
+erzielt wird. Während in Topologie 1 bereits der Ausfall einer einzelnen
+Komponente zum Totalausfall führt, ermöglicht Topologie 2 einen
+Teilbetrieb mit reduzierter Kapazität.
+
+Auffällig ist, dass die Wahrscheinlichkeit für einen vollständigen
+Systemausfall in allen Datensätzen um mehrere Größenordnungen reduziert
+wird. Gleichzeitig verschiebt sich ein Teil der Ausfallwahrscheinlichkeit
+in den Bereich reduzierter Kapazität, was zu einer insgesamt deutlich
+robusteren Systemstruktur führt.
+
+Die Ergebnisse verdeutlichen somit den wesentlichen Vorteil der
+Redundanz: Anstelle eines abrupten Übergangs zwischen vollständiger
+Verfügbarkeit und Totalausfall entsteht ein abgestuftes Verhalten mit
+erhöhter Betriebssicherheit.
 
 \subsection{Wirtschaftlicher Vergleich}
-Darstellung der jährlichen Kosten beider Topologien:
-\begin{itemize}
-    \item Investitionskosten
-    \item Kosten durch Nicht-Verfügbarkeit
-    \item Gesamtkosten
-\end{itemize}
 
-\section{Diskussion}
-Interpretation der Ergebnisse:
-\begin{itemize}
-    \item Einfluss der Topologie auf die Zuverlässigkeit
-    \item Bedeutung der Redundanz
-    \item Einfluss der Wartung
-\end{itemize}
+In diesem Abschnitt werden die beiden Topologien auf Basis der jährlichen
+Gesamtkosten miteinander verglichen. Diese setzen sich aus den
+annuitisierten Investitionskosten sowie den Kosten der nicht gelieferten
+Energie zusammen.
 
-\section{Entscheidung}
-Begründete Auswahl der optimalen Topologie basierend auf:
-\begin{itemize}
-    \item Wirtschaftlichkeit
-    \item Zuverlässigkeit
-\end{itemize}
+\paragraph{Ergebnisse}
 
-Zusatzbetrachtung:
-\begin{itemize}
-    \item Entscheidung ohne Berücksichtigung von Kapazitätseinschränkungskosten
-\end{itemize}
+Die berechneten jährlichen Gesamtkosten für beide Topologien sind in
+Tabelle \ref{tab:economic_comparison} dargestellt.
 
-\section{Fazit}
-Zusammenfassung der wichtigsten Erkenntnisse und abschließende Bewertung.
+\begin{table}[h]
+\centering
+\begin{tabular}{lccc}
+\hline
+Datensatz & Topologie 1 [EUR/a] & Topologie 2 [EUR/a] & Differenz (T2 - T1) [EUR/a] \\
+\hline
+Datensatz 1 & 2{,}846{,}535.40 & 1{,}925{,}428.53 & -921{,}106.87 \\
+Datensatz 2 & 1{,}161{,}342.42 & 1{,}765{,}666.97 & +604{,}324.56 \\
+Datensatz 3 & 6{,}880{,}272.53 & 2{,}307{,}697.89 & -4{,}572{,}574.65 \\
+\hline
+\end{tabular}
+\caption{Vergleich der jährlichen Gesamtkosten beider Topologien}
+\label{tab:economic_comparison}
+\end{table}
 
-\section*{Anhang}
-Optional:
-\begin{itemize}
-    \item Tabellen
-    \item zusätzliche Berechnungen
-    \item Code-Auszüge
-\end{itemize}
+\paragraph{Interpretation}
+
+Die Ergebnisse zeigen, dass die wirtschaftliche Vorteilhaftigkeit der
+Topologien stark von den zugrunde liegenden Zuverlässigkeitsparametern
+abhängt.
+
+Für Datensatz 1 und Datensatz 3 ist Topologie 2 trotz zusätzlicher
+Investitionskosten wirtschaftlich vorteilhaft. Die deutlich reduzierte
+Nicht-Verfügbarkeit führt zu einer erheblichen Verringerung der Kosten
+nicht gelieferter Energie, welche die zusätzlichen Investitionskosten
+überkompensiert.
+
+Im Gegensatz dazu zeigt sich für Datensatz 2 ein anderes Bild. Aufgrund
+der insgesamt geringeren Nicht-Verfügbarkeit des Systems sind die Kosten
+der nicht gelieferten Energie bereits bei Topologie 1 relativ niedrig.
+Die zusätzlichen Investitionskosten für die Schaltanlage können in diesem
+Fall nicht durch Einsparungen kompensiert werden, wodurch Topologie 1
+wirtschaftlich günstiger ist.
+
+\paragraph{Einfluss der Zuverlässigkeit}
+
+Die Analyse verdeutlicht, dass mit steigender Nicht-Verfügbarkeit der
+Einfluss der Kosten nicht gelieferter Energie stark zunimmt. In solchen
+Fällen gewinnt die Redundanz der Topologie 2 erheblich an Bedeutung, da
+sie einen Teilbetrieb ermöglicht und somit hohe Ausfallkosten vermeidet.
+
+Bei Systemen mit hoher Grundzuverlässigkeit hingegen überwiegen die
+Investitionskosten, wodurch einfachere Strukturen wirtschaftlich
+vorteilhafter sind.
+
+\paragraph{Zusammenfassung}
+
+Die Wahl der optimalen Topologie hängt maßgeblich vom Verhältnis zwischen
+Investitionskosten und Kosten der Nicht-Verfügbarkeit ab. Während
+Topologie 2 insbesondere bei weniger zuverlässigen Komponenten klare
+wirtschaftliche Vorteile bietet, ist bei sehr zuverlässigen Systemen
+Topologie 1 die kostengünstigere Lösung.
+
+\section{Fazit und Entscheidung}
+
+Ziel dieser Arbeit war die vergleichende Analyse zweier Topologien einer
+Übertragungsstrecke hinsichtlich ihrer Zuverlässigkeit und
+Wirtschaftlichkeit. Die Ergebnisse zeigen deutlich den Einfluss der
+Systemstruktur auf die Verfügbarkeit sowie die daraus resultierenden
+Kosten.
+
+\paragraph{Technische Bewertung}
+
+Die Analyse der Zuverlässigkeit hat gezeigt, dass Topologie 2 durch die
+parallele Ausführung der Kabelsysteme eine signifikant höhere
+Verfügbarkeit aufweist. Die Möglichkeit des Teilbetriebs führt dazu, dass
+ein Großteil der Ausfälle nicht mehr in einem vollständigen
+Systemausfall resultiert, sondern lediglich zu einer reduzierten
+Übertragungskapazität führt.
+
+Im Gegensatz dazu weist Topologie 1 aufgrund ihrer rein seriellen
+Struktur eine höhere Anfälligkeit gegenüber einzelnen
+Komponentenausfällen auf, wodurch bereits geringe Störungen zu einem
+vollständigen Ausfall der Übertragungsstrecke führen.
+
+\paragraph{Wirtschaftliche Entscheidung}
+
+Die wirtschaftliche Bewertung zeigt, dass die Vorteilhaftigkeit der
+Topologien stark von den zugrunde liegenden Zuverlässigkeitsparametern
+abhängt.
+
+Für Datensatz 1 und Datensatz 3 ist Topologie 2 eindeutig die
+wirtschaftlich günstigere Variante, da die erheblich reduzierten Kosten
+nicht gelieferter Energie die zusätzlichen Investitionskosten deutlich
+übersteigen.
+
+Für Datensatz 2 hingegen ist Topologie 1 wirtschaftlich vorteilhafter, da
+die geringere Nicht-Verfügbarkeit bereits zu niedrigen Ausfallkosten
+führt und die zusätzlichen Investitionskosten der Schaltanlage nicht
+kompensiert werden können.
+
+\paragraph{Entscheidung ohne Berücksichtigung der ENS-Kosten}
+
+Werden die Kosten nicht gelieferter Energie vernachlässigt, reduziert
+sich die wirtschaftliche Bewertung ausschließlich auf die
+Investitionskosten. In diesem Fall ist Topologie 1 für alle Datensätze
+die günstigere Lösung, da keine zusätzlichen Kosten für Schaltanlagen
+anfallen.
+
+\paragraph{Gesamtbewertung}
+
+Die Ergebnisse zeigen, dass redundante Systemstrukturen insbesondere bei
+geringer Zuverlässigkeit einzelner Komponenten erhebliche Vorteile
+bieten. Die Entscheidung für eine Topologie sollte daher stets unter
+Berücksichtigung der spezifischen Systemparameter sowie der
+wirtschaftlichen Rahmenbedingungen getroffen werden.
+
+Insgesamt kann festgehalten werden, dass Topologie 2 aus technischer
+Sicht überlegen ist, während die wirtschaftliche Vorteilhaftigkeit vom
+jeweiligen Anwendungsfall abhängt.
 
 
 \end{document}
