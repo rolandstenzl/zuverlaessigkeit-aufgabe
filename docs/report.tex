@@ -5,6 +5,7 @@
 \DeclareMathOperator{\cof}{Cof} % Cofaktormatrix
 \DeclareMathOperator{\adj}{Adj} % Adjunkte Matrix
 \usepackage{graphicx}
+\usepackage{titling}
 \usepackage{enumitem}
 \usepackage[most]{tcolorbox} % lädt tcolorbox mit allen Libraries
 \definecolor{violet}{RGB}{100, 0, 180}
@@ -77,17 +78,30 @@
 \newcommand{\hantel}{\mathrel{\circ\!\!-\!\!\bullet}}     % links leer, rechts gefüllt
 \newcommand{\hantelrev}{\mathrel{\bullet\!\!-\!\!\circ}}  % links gefüllt, rechts leer
 
-\title{Energiesysteme - Vertiefung\\
-    \large Hausübung - 1 \\
-    \large Zuverlässigkeitsberechnung einer Freileitung - Erdkabel - Übertragungsstrecke}
-\author{Roland Stenzl}
-% \date{\today}
+\pretitle{
+\begin{flushright}
+\includegraphics[width=4cm]{figures/TU_Wien-Logo.pdf}
+\end{flushright}
+\vspace{-2cm}
+\begin{center}
+}
 
+\posttitle{\end{center}}
+
+\title{
+Energiesysteme - Vertiefung\\[6pt]
+\large Hausübung - 1\\[4pt]
+\large Zuverlässigkeitsberechnung einer Freileitung - Erdkabel - Übertragungsstrecke
+}
+\author{Roland Stenzl}
 \begin{document}
 \maketitle
 
-\vspace{0.5cm}
+\clearpage
 
+\tableofcontents
+
+\clearpage
 
 \section{Einleitung}
 Die Zuverlässigkeit elektrischer Energiesysteme stellt ein zentrales Kriterium
